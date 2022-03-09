@@ -1,0 +1,40 @@
+:root{
+    --home-background: #F3FBFF;
+    --grey:#979797;
+    --red:#F03D24;
+    --dark-blue:#110E3C;
+    --less-dark-blue: #302E63;
+    --yellow: #FFEB3B;
+}
+body{
+    display: flex;
+    background-color: var(--home-background);
+}
+.home{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+header{
+    padding: 70px 40px 20px 40px;
+}
+.header__box{
+    display: flex;
+    width: auto;
+    height: auto;
+}
+.lupe-background{
+    padding: 10px;
+    background-color:white;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+input{
+    border: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 200px;
+}
+.forecat{
+    width: 30%
+}
