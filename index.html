@@ -7,7 +7,11 @@
     <title>Weather Forecast</title>
     <link rel = "stylesheet" href = "reset.css">
     <link rel = "stylesheet" href = "style.css">
+                                                        <!--GOOGLE FONTS-->
     <link rel = "icon" href = "img/page-icon-weather-64.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
     <section class = "home">
@@ -19,6 +23,73 @@
                 <input type = "text" placeholder="Pesquisar Lugar">
             </div>
         </header>
+        <div class = "titles">
+            <h1>Previsão do <strong>Tempo</strong></h1>
+            <h3>Última visualizadas</h3>
+        </div>
+        <div class = "cities-image">
+            <figcaption>
+                <img src = "img/img-teste/curitiba.jpg">
+                <caption>Curitiba, BRA</caption>
+            </figcaption>
+            <figcaption>
+                <img src = "img/img-teste/natal.jpg">
+                <caption>Natal, BRA</caption>
+            </figcaption>
+            <figcaption>
+                <img src = "img/img-teste/sp.jpg">
+                <caption>São Paulo, BRA</caption><!--Colocar dinamicamente pelo JS-->
+            </figcaption>
+        </div>
+        <div class = "week-forecast">
+            <div class ="cations">
+                <h4>Semana</h4>
+                <p>Domingo</p>
+                <p>Segunda</p>
+                <p>Terça</p>
+                <p>Quarta</p>
+                <p>Quinta</p>
+                <p>Sexta</p>
+                <p>Sábado</p>
+            </div>
+            <div class = "probability-rain"><!--Irá mudar de acordo com o JS-->
+                <figcaption class = "probability__description">
+                    <img src="img/dropWater.png">
+                    <caption>54%</caption>
+                </figcaption>
+
+                <figcaption class = "probability__description">
+                    <img src="img/dropWater.png">
+                    <caption>54%</caption>
+                </figcaption>
+
+                <figcaption class = "probability__description">
+                    <img src="img/dropWater.png">
+                    <caption>54%</caption>
+                </figcaption>
+                <figcaption class = "probability__description">
+                    <img src="img/dropWater.png">
+                    <caption>54%</caption>
+                </figcaption>
+
+                <figcaption class = "probability__description">
+                    <img src="img/dropWater.png">
+                    <caption>54%</caption>
+                </figcaption>
+
+                <figcaption class = "probability__description">
+                    <img src="img/dropWater.png">
+                    <caption>54%</caption>
+                </figcaption>
+
+                <figcaption class = "probability__description">
+                    <img src="img/dropWater.png">
+                    <caption>54%</caption>
+                </figcaption>
+
+            </div>
+
+        </div>
     </section>
     <section class = "forecast"></section>
 </body>
