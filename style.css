@@ -213,13 +213,13 @@ figcaption{
 .infos{
     margin-top: 50px;
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-evenly;
     display: flex;
     color: var(--grey);
 }
 .dot::before{
     content: "⋅";
-    margin-right:80px;
+    margin-right:45px;
 }
 .descriptionGraphic{
     margin-top: 70px;
