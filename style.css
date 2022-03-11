@@ -13,7 +13,7 @@ body{
     height: auto;
 }
 .home{
-    width: 70%;
+    width: 60%;
     display: flex;
     flex-direction: column;
     padding: 60px;
@@ -59,7 +59,7 @@ strong{
     padding: 20px 0px 20px 0px;
 }
 .cities-image img{
-    width: 250px;
+    width: 220px;
     height: 160px;
     border-radius: 10px;
     margin-bottom: 10px;
@@ -75,13 +75,13 @@ figcaption{
     grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
     grid-template-areas: 
         "captions vazio vazio vazio vazio vazio"
-        "captions probability-rain icon min-temp graphic max-temp"
-        "captions probability-rain icon min-temp graphic max-temp"
-        "captions probability-rain icon min-temp graphic max-temp"
-        "captions probability-rain icon min-temp graphic max-temp"
-        "captions probability-rain icon min-temp graphic max-temp"
-        "captions probability-rain icon min-temp graphic max-temp"
-        "captions probability-rain icon min-temp graphic max-temp";
+        "captions probability-rain statusOfday min-temp graphic max-temp"
+        "captions probability-rain statusOfday min-temp graphic max-temp"
+        "captions probability-rain statusOfday min-temp graphic max-temp"
+        "captions probability-rain statusOfday min-temp graphic max-temp"
+        "captions probability-rain statusOfday min-temp graphic max-temp"
+        "captions probability-rain statusOfday min-temp graphic max-temp"
+        "captions probability-rain statusOfday min-temp graphic max-temp";
 }
 .cations{
     grid-area: captions;
@@ -95,6 +95,7 @@ figcaption{
 }
 .cations p {
     font-size: 16px;
+    padding: 15px;
 }
 .probability-rain{
     grid-area: probability-rain;
@@ -108,6 +109,16 @@ figcaption{
     width: 15%;
     margin-right: 5px;
 }
-.forecat{
-    width: 30%;
+.statusOfday{
+    grid-area: statusOfday;
+}
+.statusOfday img{
+    padding: 5px;
+}
+.minTemp{
+    grid-area: min-temp;
+}
+.forecast{
+    width: 40%;
+    background-color: var(--dark-blue)
 }
