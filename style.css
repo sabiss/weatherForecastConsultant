@@ -18,7 +18,7 @@ body{
     flex-direction: column;
     padding: 60px;
 }
-header{
+.home__header{
     padding: 40px 0px;
 }
 .header__box{
@@ -83,8 +83,9 @@ figcaption{
         "captions probability-rain statusOfday min-temp graphic max-temp"
         "captions probability-rain statusOfday min-temp graphic max-temp";
 }
-.cations{
-    grid-area: captions;
+.cations, .probability-rain, .statusOfday{
+    display: grid;
+    grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr;
 }
 .cations h4{
     font-size: 19px;
@@ -121,4 +122,81 @@ figcaption{
 .forecast{
     width: 40%;
     background-color: var(--dark-blue)
+}
+.forecast__header{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    align-items: center;
+    color: white;
+}
+.forecast__header___container{
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 15px;
+}
+.forecast__header___container:hover{
+    cursor: pointer;
+}
+.notification::after{
+    content: "4";
+    background-color: #F03D24;
+    padding: 3px 4px 3px 4px;
+    border-radius: 7px;
+    margin-left: 5px;
+}
+.perfilPhoto{
+    width: 15%;
+    border-radius: 5px;
+}
+.forecast__main{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.forecast__main___controlContainer{
+    justify-content: center;
+    width: 100%;
+    display: flex;
+}
+.forecast__main___littleContainer{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+.forecast__main___littleContainer h2{
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.forecast__main___controlContainer::before{
+    content: url(img/weatherIcons/windIcon50.png);
+    align-self: center;
+    margin-right: 15px;
+}
+.forecast__main___littleContainer p{
+    color: var(--grey);
+}
+.temp{
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.temp h1{
+    font-size: 5rem;
+    font-weight: bold;
+    color:white;
+}
+.temp span{
+    font-size: 2rem;
+    vertical-align: super;
+    font-weight: normal;
+}
+.temp p{
+    color: var(--grey);
+    margin-top: 20px;
 }
