@@ -42,8 +42,8 @@
             </figcaption>
         </div>
         <div class = "week-forecast">
-            <div class ="cations">
-                <h4>Semana</h4>
+            <div class = "day column">
+                <h3>Semana</h3>
                 <p>Domingo</p>
                 <p>Segunda</p>
                 <p>Terça</p>
@@ -52,51 +52,28 @@
                 <p>Sexta</p>
                 <p>Sábado</p>
             </div>
-            <div class = "probability-rain"><!--Irá mudar de acordo com o JS-->
-                <figcaption class = "probability__description">
-                    <img src="img/dropWater.png">
-                    <caption>54%</caption>
-                </figcaption>
-
-                <figcaption class = "probability__description">
-                    <img src="img/dropWater.png">
-                    <caption>54%</caption>
-                </figcaption>
-
-                <figcaption class = "probability__description">
-                    <img src="img/dropWater.png">
-                    <caption>54%</caption>
-                </figcaption>
-                <figcaption class = "probability__description">
-                    <img src="img/dropWater.png">
-                    <caption>54%</caption>
-                </figcaption>
-
-                <figcaption class = "probability__description">
-                    <img src="img/dropWater.png">
-                    <caption>54%</caption>
-                </figcaption>
-
-                <figcaption class = "probability__description">
-                    <img src="img/dropWater.png">
-                    <caption>54%</caption>
-                </figcaption>
-
-                <figcaption class = "probability__description">
-                    <img src="img/dropWater.png">
-                    <caption>54%</caption>
-                </figcaption>
+            <div class = "probabilityRain column">
+                <p class = "pIgnore"></p>
+                <p>54%</p>
+                <p>54%</p>
+                <p>54%</p>
+                <p>54%</p>
+                <p>54%</p>
+                <p>54%</p>
+                <p>54%</p>
             </div>
-            <div class = "statusOfday">
-                <img src="img/weatherIcons/sunBehindCloudIcon.png" alt="icon about status of Weather">
-                <img src="img/weatherIcons/rainIcon.png" alt="icon about status of Weather">
-                <img src="img/weatherIcons/sunBehindCloudIcon.png" alt="icon about status of Weather">
-                <img src="img/weatherIcons/sunBehindCloudIcon.png" alt="icon about status of Weather">
-                <img src="img/weatherIcons/sunBehindCloudIcon.png" alt="icon about status of Weather">
-                <img src="img/weatherIcons/stormIcon.png" alt="icon about status of Weather">
-                <img src="img/weatherIcons/sunBehindCloudIcon.png" alt="icon about status of Weather">
+            <div class = "statusOfWeather column">
+                <img src="" class = "ignore">
+                <img src="img/weatherIcons/sunBehindCloudIcon.png" alt="icon indicating the status of the weather forecast">
+                <img src="img/weatherIcons/rainIcon.png" alt="icon indicating the status of the weather forecast">
+                <img src="img/weatherIcons/sunBehindCloudIcon.png" alt="icon indicating the status of the weather forecast">
+                <img src="img/weatherIcons/sunBehindCloudIcon.png" alt="icon indicating the status of the weather forecast">
+                <img src="img/weatherIcons/sunBehindCloudIcon.png" alt="icon indicating the status of the weather forecast">
+                <img src="img/weatherIcons/stormIcon.png" alt="icon indicating the status of the weather forecast">
+                <img src="img/weatherIcons/sunBehindCloudIcon.png" alt="icon indicating the status of the weather forecast">
             </div>
-            <div class = "minTemp">
+            <div class = "minTemp column">
+                <p class = "ignore"></p>
                 <p>20°C</p>
                 <p>16°C</p>
                 <p>25°C</p>
@@ -104,6 +81,41 @@
                 <p>20°C</p>
                 <p>20°C</p>
                 <p>20°C</p>
+            </div>
+            <div class = "graphic column">
+                <div class = "ignore"></div>
+                <div class = "bar">
+                    <div class = "greyBar"></div><div class = "redBar"></div>
+                </div>
+                <div class = "bar">
+                    <div class = "greyBar"></div><div class = "redBar"></div>
+                </div>
+                <div class = "bar">
+                    <div class = "greyBar"></div><div class = "redBar"></div>
+                </div>
+                <div class = "bar">
+                    <div class = "greyBar"></div><div class = "redBar"></div>
+                </div>
+                <div class = "bar">
+                    <div class = "greyBar"></div><div class = "redBar"></div>
+                </div>
+                <div class = "bar">
+                    <div class = "greyBar"></div><div class = "redBar"></div>
+                </div>
+                <div class = "bar">
+                    <div class = "greyBar"></div><div class = "redBar"></div>
+                </div>
+                
+            </div>
+            <div class = "maxTemp column">
+                <p class = "ignore"></p>
+                <p>35°C</p>
+                <p>35°C</p>
+                <p>35°C</p>
+                <p>35°C</p>
+                <p>35°C</p>
+                <p>35°C</p>
+                <p>35°C</p>
             </div>
         </div>
     </section>
@@ -126,7 +138,24 @@
                 <h1>28 <span>°C</span></h1>
                 <p>Natal, BRA</p>
             </div>
-            
+            <div class = "infos">
+                <p>Sensação de 26</p>
+                <p class = "dot">Por do sol <span>17:15</span></p>
+            </div>
+            <h3 class = "descriptionGraphic">Chances de chuva</h3>
+            <div class = "graphicBox">
+                <div class = "column__graphicBox forecastInformation">
+                    <p>Sol</p>
+                    <p>Chuva</p>
+                    <p>Tempestade</p>
+                </div>
+                <div class = "column__graphicBox"></div>
+                <div class = "column__graphicBox"></div>
+                <div class = "column__graphicBox"></div>
+                <div class = "column__graphicBox"></div>
+                <div class = "column__graphicBox"></div>
+                <div class = "column__graphicBox"></div>
+            </div>
         </main>
     </section>
 </body>
