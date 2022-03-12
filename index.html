@@ -52,7 +52,7 @@
                 <p>Sexta</p>
                 <p>Sábado</p>
             </div>
-            <div class = "probabilityRain column">
+            <div class = "probabilityRain column"> <!--Fazer uma queryAll com essa classe:probabilityRain-->
                 <p class = "pIgnore"></p>
                 <p>54%</p>
                 <p>54%</p>
@@ -62,7 +62,7 @@
                 <p>54%</p>
                 <p>54%</p>
             </div>
-            <div class = "statusOfWeather column">
+            <div class = "statusOfWeather column"><!--Fazer uma queryAll com essa classe:statusOfWeather-->
                 <img src="" class = "ignore">
                 <img src="img/weatherIcons/sunBehindCloudIcon.png" alt="icon indicating the status of the weather forecast">
                 <img src="img/weatherIcons/rainIcon.png" alt="icon indicating the status of the weather forecast">
@@ -72,7 +72,7 @@
                 <img src="img/weatherIcons/stormIcon.png" alt="icon indicating the status of the weather forecast">
                 <img src="img/weatherIcons/sunBehindCloudIcon.png" alt="icon indicating the status of the weather forecast">
             </div>
-            <div class = "minTemp column">
+            <div class = "minTemp column"><!--Fazer uma queryAll com essa classe:minTemp-->
                 <p class = "ignore"></p>
                 <p>20°C</p>
                 <p>16°C</p>
@@ -85,29 +85,29 @@
             <div class = "graphic column">
                 <div class = "ignore"></div>
                 <div class = "bar">
-                    <div class = "greyBar"></div><div class = "redBar"></div>
+                    <div class = "greyBar mimTempDomingo"></div><div class = "redBar maxTempDomingo"></div>
                 </div>
                 <div class = "bar">
-                    <div class = "greyBar"></div><div class = "redBar"></div>
+                    <div class = "greyBar mimTempSegunda"></div><div class = "redBar maxTempSegunda"></div>
                 </div>
                 <div class = "bar">
-                    <div class = "greyBar"></div><div class = "redBar"></div>
+                    <div class = "greyBar mimTempTerça"></div><div class = "redBar maxTempTerça"></div>
                 </div>
                 <div class = "bar">
-                    <div class = "greyBar"></div><div class = "redBar"></div>
+                    <div class = "greyBar mimTempQuarta"></div><div class = "redBar maxTempQuarta"></div>
                 </div>
                 <div class = "bar">
-                    <div class = "greyBar"></div><div class = "redBar"></div>
+                    <div class = "greyBar mimTempQuinta"></div><div class = "redBar maxTempQuinta"></div>
                 </div>
                 <div class = "bar">
-                    <div class = "greyBar"></div><div class = "redBar"></div>
+                    <div class = "greyBar mimTempSexta"></div><div class = "redBar maxTempSexta"></div>
                 </div>
                 <div class = "bar">
-                    <div class = "greyBar"></div><div class = "redBar"></div>
+                    <div class = "greyBar mimTempSabado"></div><div class = "redBar maxTempSabado"></div>
                 </div>
                 
             </div>
-            <div class = "maxTemp column">
+            <div class = "maxTemp column"><!--Fazer uma queryAll com essa classe:maxTemp-->
                 <p class = "ignore"></p>
                 <p>35°C</p>
                 <p>35°C</p>
@@ -129,18 +129,18 @@
         </header>
         <main class = "forecast__main">
             <div class = "forecast__main___controlContainer">
-                <div class = "forecast__main___littleContainer">
+                <div class = "forecast__main___littleContainer"><!--pegar o query desse forecast__main___littleContainer da tag P-->
                     <h2>Hoje</h2>
                     <p>Segunda, 28 Setembro</p>
                 </div>
             </div>
-            <div class = "temp">
+            <div class = "temp"><!--pegar o query desse temp da tag P e H1-->
                 <h1>28 <span>°C</span></h1>
                 <p>Natal, BRA</p>
             </div>
             <div class = "infos">
-                <p>Sensação de 26</p>
-                <p class = "dot">Por do sol <span>17:15</span></p>
+                <p>Sensação de <span>26</span></p>
+                <p class = "dot">Por do sol <span>17:15</span></p><!--pegar o query desse infos da tag span-->
             </div>
             <h3 class = "descriptionGraphic">Chances de chuva</h3>
             <div class = "graphicBox">
@@ -149,12 +149,30 @@
                     <p>Chuva</p>
                     <p>Tempestade</p>
                 </div>
-                <div class = "column__graphicBox"></div>
-                <div class = "column__graphicBox"></div>
-                <div class = "column__graphicBox"></div>
-                <div class = "column__graphicBox"></div>
-                <div class = "column__graphicBox"></div>
-                <div class = "column__graphicBox"></div>
+                <div class = "column__graphicBox">
+                    <div class = "column__graphicBox___first"></div>
+                    <p class = "column__graphicBox___p">8AM</p>
+                </div>
+                <div class = "column__graphicBox">
+                    <div class = "column__graphicBox___second"></div>
+                    <p class = "column__graphicBox___p">12PM</p>
+                </div>
+                <div class = "column__graphicBox">
+                    <div class = "column__graphicBox___third"></div>
+                    <p class = "column__graphicBox___p">16PM</p>
+                </div>
+                <div class = "column__graphicBox">
+                    <div class = "column__graphicBox___fourth"></div>
+                    <p class = "column__graphicBox___p">20PM</p>
+                </div>
+                <div class = "column__graphicBox">
+                    <div class = "column__graphicBox___fifth"></div>
+                    <p class = "column__graphicBox___p">12AM</p>
+                </div>
+                <div class = "column__graphicBox">
+                    <div class = "column__graphicBox___sixth"></div>
+                    <p class = "column__graphicBox___p">4AM</p>
+                </div>
             </div>
         </main>
     </section>
