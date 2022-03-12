@@ -163,6 +163,15 @@ figcaption{
     width: 15%;
     border-radius: 5px;
 }
+.clouds{
+    position: absolute;
+    opacity: 0.4;
+    z-index: -1;
+}
+.c1{
+    top: 0px;
+    right: 0px;
+}
 .forecast__main{
     display: flex;
     align-items: center;
