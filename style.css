@@ -12,6 +12,9 @@ body{
     font-family: 'Lato', sans-serif;
     height: auto;
 }
+section{
+    height: 100%;
+}
 .home{
     width: 60%;
     display: flex;
@@ -124,6 +127,9 @@ figcaption{
 .greyBar{
     background-color: #979797;
 }
+.maxTemp{
+    text-align: center;
+}
 .forecast{
     width: 40%;
     background-color: var(--dark-blue)
@@ -222,21 +228,215 @@ figcaption{
     margin-right:45px;
 }
 .descriptionGraphic{
-    margin-top: 70px;
+    margin-top: 90px;
     color: var(--grey);
     align-self: flex-start;
     justify-self: start;
     margin-bottom: 30px;
 }
 .graphicBox{
+    margin-top: 20px;
     display: grid;
     grid-template-columns: repeat(7,1fr);
 }
 .column__graphicBox{
     display: grid;
-    grid-template-rows: repeat(4, 0.5fr);
+    grid-template-rows: repeat(4, 1fr);
+    color: var(--grey)
 }
 .forecastInformation p {
     padding: 30px 0px;
     color: var(--grey)
+}
+.column__graphicBox div{
+    justify-self: center;
+    width: 20px;
+    background-color: var(--less-dark-blue);
+    border-radius: 20px;
+    grid-row: 1/4;
+    align-self: flex-end;
+}
+.column__graphicBox___first{
+    height: 200px;
+}
+.column__graphicBox___second{
+    height: 150px;
+}
+.column__graphicBox___third{
+    height: 140px;
+    background-color: var(--yellow);
+}
+.column__graphicBox___fourth{
+    height: 50%;
+}
+.column__graphicBox___fifth{
+    height: 70%;
+}
+.column__graphicBox___sixth{
+    height: 100%;
+}
+.column__graphicBox___p{
+    grid-row: 4/4;
+    text-align: center;
+    margin-top: 20px;
+}
+@media only screen and (max-width: 900px){
+    body{
+        flex-direction: column;
+    }
+    .cities-image{
+        display: none;
+    }
+    .home, .forecast{
+        width: 100%;
+        padding: 0px;
+    }
+    .titles h1{
+        text-align: center;
+    }
+    .titles h3{
+        display: none;
+    }
+    .header__box{
+        justify-self: center;
+    }
+    .graphicBox{
+        font-size: 15px;
+    }
+    .column__graphicBox div{
+        margin: 0px 10px;
+        width: 15px;
+    }
+    .column__graphicBox___p{
+        font-size: 12px;
+    }
+    .forecast__main{
+        padding: 0px 10px 10px 10px;
+    }
+}
+@media only screen and (min-width: 901px) and (max-width: 1150px){
+    body{
+        flex-direction: column;
+    }
+    .forecast__header___container{
+        font-size: 1.2rem;
+    }
+    .week-forecast {
+        font-size: 1.2rem;
+    }
+    .probabilityRain p{
+        font-size: 1.2rem;
+    }
+    .notification{
+        margin-right: 50px;
+    }
+    .perfilPhoto{
+        width: 10%;
+    }
+    .forecast__main___littleContainer h2{
+        font-size: 3rem;
+    }
+    .forecast__main___littleContainer p{
+        font-size: 1.5rem;
+    }
+    .temp h1{
+        font-size: 7rem;
+    }
+    .temp p{
+        font-size: 1.5rem;
+    }
+    .infos{
+        font-size: 1.4rem;
+    }
+    .descriptionGraphic{
+        font-size: 1.5rem;
+    }
+    .cities-image{
+        display: none;
+    }
+    .home__header{
+        padding: 40px 20px;
+    }
+    input{
+        width: 400px;
+        font-size: 1.1rem;
+    }
+    .home, .forecast{
+        width: 100%;
+        padding: 0px;
+    }
+    .titles h1{
+        text-align: center;
+    }
+    .titles h3{
+        display: none;
+    }
+    .header__box{
+        justify-content: center;
+    }
+    .graphicBox{
+        font-size: 1.4rem;
+        width: 90%;
+    }
+    .column__graphicBox div{
+        margin: 0px 10px;
+        width: 15px;
+    }
+    .column__graphicBox___p{
+        font-size: 1.2rem;
+    }
+    .forecast__main{
+        padding: 0px 10px 10px 10px;
+    }
+}
+@media only screen and (min-width: 1151px){
+    .home{
+        padding: 30px;
+    }
+    .column{
+        font-size: 1.2rem;
+    }
+    .column h3{
+        font-size: 1.4rem;
+    }
+    .week-forecast{
+        margin-top: 30px;
+    }
+    .cities-image img{
+        width: 200px;
+    }
+    .forecast__main{
+        padding: 20px;
+    }
+    .forecast__header___container{
+        font-size: 1.2rem;
+    }
+    .notification{
+        margin-right: 20px;
+    }
+    .forecast__main___littleContainer h2{
+        font-size: 2rem;
+    }
+    .forecast__main___littleContainer p{
+        font-size: 1.2rem;
+    }
+    .temp p{
+        font-size: 1.2rem;
+    }
+    .infos{
+        font-size: 1.3rem;
+    }
+    .descriptionGraphic{
+        font-size: 1.2rem;
+    }
+    .forecastInformation p{
+        font-size: 1.3rem;
+    }
+    .probabilityRain p{
+        font-size: 1.3rem;
+    }
+    input{
+        font-size: 1.1rem;
+        width: 250px;
+    }
 }
