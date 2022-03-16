@@ -7,14 +7,14 @@ const PRECIPITATION = document.querySelectorAll("span.probabilityP")//all the ta
 const WEATHERICONS = ["img/weatherIcons/rainIcon.png", "img/weatherIcons/stormIcon.png", "img/weatherIcons/sunBehindCloudIcon.png", "img/weatherIcons/sunIcon.png", "img/weatherIcons/windIcon.png"]// an array with all the weather icons
 
 function search(){
-    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${CITY.value}&limit=${limit}&appid=${KEY}`)//request to get the latitude and longitude of the city that user wants to see the weather forecast
+    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${CITY.value}&limit=${limit}&appid=${KEY}`)//request to get the latitude and longitude of the city that user wants to see the weather forecast
     .then(response => {
         response.json()
         .then(data => {
             console.log(data)
             lat = data[0]["lat"]
             lon = data[0]["lon"]
-            fetch(`http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&lang=pt_br&exclude=current,minutely,hourly&appid=${KEY}`)//putting the latitude and longitude on the request to get the weather information
+            fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&lang=pt_br&exclude=current,minutely,hourly&appid=${KEY}`)//putting the latitude and longitude on the request to get the weather information
             .then(response=>{
                 response.json()
                 .then(data => {
