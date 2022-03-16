@@ -132,9 +132,11 @@ figcaption{
     text-align: center;
 }
 .forecast{
+    position: relative;
+    z-index: -1 ;
     width: 40%;
     height: 100%;
-    background-color: var(--dark-blue)
+    background-color: var(--dark-blue);
 }
 .forecast__header{
     display: flex;
@@ -164,15 +166,27 @@ figcaption{
     border-radius: 5px;
 }
 .clouds{
+    opacity: 0.2;
     position: absolute;
-    opacity: 0.4;
     z-index: -1;
+    width: 200px;
 }
 .c1{
-    top: 0px;
+    top: 190px;
     right: 0px;
+    width: 220px;
+}
+.c2{
+    width: 250px;
+    left:-14px
+}
+.c3{
+    top: -97px;
+    right: 0px;
+    width: 250px;
 }
 .forecast__main{
+    position: relative;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -323,6 +337,9 @@ figcaption{
     }
     .forecast__main{
         padding: 0px 10px 10px 10px;
+    }
+    .clouds{
+        width: 200px;
     }
 }
 @media only screen and (min-width: 901px) and (max-width: 1150px){
