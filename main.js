@@ -14,14 +14,15 @@ function search(){
             console.log(data)
             lat = data[0]["lat"]
             lon = data[0]["lon"]
-            fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&lang=pt_br&exclude=current,minutely,hourly&appid=${KEY}`)//putting the latitude and longitude on the request to get the weather information
+            fetch(`http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&lang=pt_br&exclude=current,minutely,hourly&appid=${KEY}`)//putting the latitude and longitude on the request to get the weather information
             .then(response=>{
                 response.json()
                 .then(data => {
                     console.log(data)
                     //setting the rain probability on html
-                    for(let i = 0; i <= 7; i++){
+                    for(let i = 0; i < 7; i++){
                         let rain = data["daily"][i]["rain"]//pega a informação da chuva
+                        console.log(rain)
                         if(rain == undefined){//não tem porbabilidade de chuva = rain indefined
                             let no = document.createTextNode("0")
                             PRECIPITATION[i].innerText = ""
