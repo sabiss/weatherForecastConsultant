@@ -9,6 +9,11 @@ const ICONS = document.querySelectorAll("img.statusIcon")
 const MIMTEMPP = document.querySelectorAll("span.minTempP")
 const MAXTEMPP = document.querySelectorAll("span.maxTempP")
 const REDBARS = document.querySelectorAll("div.redBar")
+const GREYBARS = document.querySelectorAll("div.greyBar")
+let day = document.querySelector("span.dayOfWeek")
+let daynumber = document.querySelector("span.dayOfWeekNumber")
+let mouthHtml = document.querySelector("span.mouthOfUser")
+const TEMPNOW = document.querySelector("span.currentTemperature")
 
 function search(){
     fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${CITY.value}&limit=${limit}&appid=${KEY}`)//request to get the latitude and longitude of the city that user wants to see the weather forecast
@@ -22,7 +27,6 @@ function search(){
                 response.json()
                 .then(data => {
                     //setting the rain probability on html
-                    console.log(data)
                     for(let i = 0; i < 7; i++){
                         let rain = data["daily"][i]["rain"]//pega a informação da chuva
                         
@@ -39,7 +43,6 @@ function search(){
                     //NÃO TA CHEGANDO AQUI
                     //setting day weather status in html img tags
                     for(let i = 0; i < 7; i++){
-                        console.log(i)
                         if(data["daily"][i]["weather"][0]["main"] == "Rain"){//verificando se vai chover//pegando a img daquele dia no html
                             ICONS[i].src = WEATHERICONS[0]//colocando a src dele para o icon de chuva
                         }
@@ -50,12 +53,14 @@ function search(){
                             ICONS[i].src = WEATHERICONS[4]
                         }
                     }
-                    
+                    //adjusting maximum and minimum temperature chart information
                     for(let i = 0; i < 7; i++){
                         let max = data["daily"][i]["temp"]["max"]
                         let min = data["daily"][i]["temp"]["min"]
                         
-                        // REDBARS.style.width = max
+                        REDBARS[i].style.width = `${max}%`
+                        GREYBARS[i].style.width = `${min}%`
+
 
                         max = document.createTextNode(max)
                         min = document.createTextNode(min)
@@ -65,6 +70,24 @@ function search(){
                         MIMTEMPP[i].appendChild(min)
                         MAXTEMPP[i].appendChild(max)
                     }
+                    var date = new Date()
+                    const WEEK = ["Domingo-Feira", "Segunda-Feira", "Terça-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira", "Sábado"]
+                    const MOUTH = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
+
+                    let mouthOfUser = MOUTH[date.getMonth()]
+                    let mouth = document.createTextNode(mouthOfUser)
+                    mouthHtml.innerText = ""
+                    mouthHtml.appendChild(mouth)
+
+                    let dayOfWeek = WEEK[date.getDay()]//pegando o índice que se refere ao dia da semana na lista
+                    day.innerText = dayOfWeek
+
+                    let number = date.getDate()
+                    number = document.createTextNode(number)
+                    daynumber.innerText = ""
+                    daynumber.appendChild(number)
+
+                    console.log(data)
                 })
             })
         })
