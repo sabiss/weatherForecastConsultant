@@ -116,7 +116,7 @@ figcaption{
 }
 .redBar, .greyBar{
     height: 5px;
-    width: 30%;
+    width: 100%;
     align-self: center;
 }
 .bar{
@@ -230,7 +230,7 @@ figcaption{
     font-weight: bold;
     color:white;
 }
-.temp span{
+.celsius{
     font-size: 2rem;
     vertical-align: super;
     font-weight: normal;
