@@ -235,6 +235,9 @@ figcaption{
     vertical-align: super;
     font-weight: normal;
 }
+.country{
+    text-transform: uppercase;
+}
 .temp p{
     color: var(--grey);
     margin-top: 20px;
