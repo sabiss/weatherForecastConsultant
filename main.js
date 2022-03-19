@@ -4,7 +4,7 @@ const CITY = document.querySelector("input")
 let limit = 1
 const KEY = "9dc46f67dfcdd64dfca56c839c8359f2"// key of api
 const PRECIPITATION = document.querySelectorAll("span.probabilityP")//all the tags that indicate probability rain
-const WEATHERICONS = ["img/weatherIcons/rainIcon.png", "img/weatherIcons/cloud.png","img/weatherIcons/stormIcon.png", "img/weatherIcons/sunBehindCloudIcon.png", "img/weatherIcons/sunIcon.png", "img/weatherIcons/windIcon.png"]// an array with all the weather icons
+const WEATHERICONS = ["img/weatherIcons/rainIcon.png", "img/weatherIcons/cloud.png","img/weatherIcons/stormIcon.png", "img/weatherIcons/sunBehindCloudIcon.png", "img/weatherIcons/sunIcon.png", "img/weatherIcons/windIcon.png", "img/weatherIcons/showIcon.png", "img/weatherIcons/drizzleIcon.png"]// an array with all the weather icons
 const ICONS = document.querySelectorAll("img.statusIcon")
 const MIMTEMPP = document.querySelectorAll("span.minTempP")
 const MAXTEMPP = document.querySelectorAll("span.maxTempP")
@@ -14,12 +14,18 @@ let day = document.querySelector("span.dayOfWeek")
 let daynumber = document.querySelector("span.dayOfWeekNumber")
 let mouthHtml = document.querySelector("span.mouthOfUser")
 const TEMPNOW = document.querySelector("span.currentTemperature")
+const RESEARCHEDCITY = document.querySelector("span.researchedCity")
+const COUNTRY = document.querySelector("span.country")
+const FEELSLIKE = document.querySelector("span.feelsLike")
+const SUNSET = document.querySelector("span.sunset")
 
 function search(){
     fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${CITY.value}&limit=${limit}&appid=${KEY}`)//request to get the latitude and longitude of the city that user wants to see the weather forecast
     .then(response => {
         response.json()
         .then(data => {
+            let countryName = data[0]["country"]
+            COUNTRY.innerText = countryName
             lat = data[0]["lat"]
             lon = data[0]["lon"]
             fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&lang=pt_br&exclude=current,minutely,hourly&appid=${KEY}`)//putting the latitude and longitude on the request to get the weather information
@@ -27,6 +33,7 @@ function search(){
                 response.json()
                 .then(data => {
                     //setting the rain probability on html
+                    console.log(data)
                     for(let i = 0; i < 7; i++){
                         let rain = data["daily"][i]["rain"]//pega a informação da chuva
                         
@@ -49,9 +56,19 @@ function search(){
                         else if(data["daily"][i]["weather"][0]["main"] == "Clouds"){//pegando a img daquele dia no html
                             ICONS[i].src = WEATHERICONS[1]//colocando a src dele para o icon de chuva
                         }
+                        else if(data["daily"][i]["weather"][0]["main"] == "Thunderstorm"){
+                            ICONS[i].src = WEATHERICONS[2]
+                        }
                         else if(data["daily"][i]["weather"][0]["main"] == "Clear"){
                             ICONS[i].src = WEATHERICONS[4]
                         }
+                        else if(data["daily"][i]["weather"][0]["main"] == "Snow"){
+                            ICONS[i].src = WEATHERICONS[6]
+                        }
+                        else if(data["daily"][i]["weather"][0]["main"] == "Drizzle"){
+                            ICONS[i].src = WEATHERICONS[7]
+                        }
+                        
                     }
                     //adjusting maximum and minimum temperature chart information
                     for(let i = 0; i < 7; i++){
@@ -88,6 +105,77 @@ function search(){
                     daynumber.appendChild(number)
 
                     console.log(data)
+
+                    let dayOfWeekNumber = date.getDay()
+                    dayHour = date.getHours()
+                    console.log(dayHour)
+
+                    if(dayHour >= 1 && dayHour <= 12){
+                        console.log("morning")
+                        let tempNowWindow = data["daily"][dayOfWeekNumber]["temp"]["morn"]
+                        tempNowWindow = document.createTextNode(tempNowWindow)
+                        TEMPNOW.innerText = ""
+                        TEMPNOW.appendChild(tempNowWindow)
+
+                        let feelsLikeInformation = data["daily"][dayOfWeekNumber]["feels_like"]["morn"]
+                        feelsLikeInformation = document.createTextNode(feelsLikeInformation)
+                        console.log(feelsLikeInformation)
+                        FEELSLIKE.innerText = ""
+                        FEELSLIKE.appendChild(feelsLikeInformation)
+                    }
+                    else if(dayHour >= 13 && dayHour <= 16){
+                        console.log("day")
+                        let tempNowWindow = data["daily"][dayOfWeekNumber]["temp"]["day"]
+                        tempNowWindow = document.createTextNode(tempNowWindow)
+                        console.log(TEMPNOW)
+                        TEMPNOW.innerText = ""
+                        TEMPNOW.appendChild(tempNowWindow)
+
+                        let feelsLikeInformation = data["daily"][dayOfWeekNumber]["feels_like"]["day"]
+                        feelsLikeInformation = document.createTextNode(feelsLikeInformation)
+                        console.log(feelsLikeInformation)
+                        FEELSLIKE.innerText = ""
+                        FEELSLIKE.appendChild(feelsLikeInformation)
+                    }
+                    else if(dayHour >= 17 && dayHour <= 18){
+                        console.log("eve")
+                        let tempNowWindow = data["daily"][dayOfWeekNumber]["temp"]["eve"]
+                        tempNowWindow = document.createTextNode(tempNowWindow)
+                        TEMPNOW.innerText = ""
+                        TEMPNOW.appendChild(tempNowWindow)
+
+                        let feelsLikeInformation = data["daily"][dayOfWeekNumber]["feels_like"]["eve"]
+                        feelsLikeInformation = document.createTextNode(feelsLikeInformation)
+                        console.log(feelsLikeInformation)
+                        FEELSLIKE.innerText = ""
+                        FEELSLIKE.appendChild(feelsLikeInformation)
+                    }
+                    else if(dayHour >=19 && dayHour <= 23){
+                        console.log("night")
+                        let tempNowWindow = data["daily"][dayOfWeekNumber]["temp"]["nigh"]
+                        tempNowWindow = document.createTextNode(tempNowWindow)
+                        TEMPNOW.innerText = ""
+                        TEMPNOW.appendChild(tempNowWindow)
+
+                        let feelsLikeInformation = data["daily"][dayOfWeekNumber]["feels_like"]["nigh"]
+                        feelsLikeInformation = document.createTextNode(feelsLikeInformation)
+                        console.log(feelsLikeInformation)
+                        FEELSLIKE.innerText = ""
+                        FEELSLIKE.appendChild(feelsLikeInformation)
+                    }
+
+                    let cityName = CITY.value
+                    RESEARCHEDCITY.innerText = ""
+                    RESEARCHEDCITY.innerText = cityName[0].toUpperCase() + cityName.slice(1).toLowerCase()
+                    
+                    let sunsetInformation = data["daily"][dayOfWeekNumber]["sunset"]
+                    sunsetInformation = new Date(sunsetInformation*1000)
+                    let sunsetInformationHours = sunsetInformation.getHours()
+                    let sunsetInformationMinutes = sunsetInformation.getMinutes()
+                    sunsetInformation = sunsetInformationHours + ":" + sunsetInformationMinutes
+                    sunsetInformation = document.createTextNode(sunsetInformation)
+                    SUNSET.innerText = ""
+                    SUNSET.appendChild(sunsetInformation)
                 })
             })
         })
@@ -95,5 +183,4 @@ function search(){
     .catch(error =>{
         console.log(error)
     })
-    
 }
