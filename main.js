@@ -18,6 +18,7 @@ const RESEARCHEDCITY = document.querySelector("span.researchedCity")
 const COUNTRY = document.querySelector("span.country")
 const FEELSLIKE = document.querySelector("span.feelsLike")
 const SUNSET = document.querySelector("span.sunset")
+const ICONOFDAY = document.querySelector('div.forecast__main___controlContainer')
 
 function search(){
     fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${CITY.value}&limit=${limit}&appid=${KEY}`)//request to get the latitude and longitude of the city that user wants to see the weather forecast
@@ -28,12 +29,11 @@ function search(){
             COUNTRY.innerText = countryName
             lat = data[0]["lat"]
             lon = data[0]["lon"]
-            fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&lang=pt_br&exclude=current,minutely,hourly&appid=${KEY}`)//putting the latitude and longitude on the request to get the weather information
+            fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&lang=pt_br&exclude=current,minutely&appid=${KEY}`)//putting the latitude and longitude on the request to get the weather information
             .then(response=>{
                 response.json()
                 .then(data => {
                     //setting the rain probability on html
-                    console.log(data)
                     for(let i = 0; i < 7; i++){
                         let rain = data["daily"][i]["rain"]//pega a informação da chuva
                         
@@ -176,6 +176,26 @@ function search(){
                     sunsetInformation = document.createTextNode(sunsetInformation)
                     SUNSET.innerText = ""
                     SUNSET.appendChild(sunsetInformation)
+
+                    if(data["daily"][dayOfWeekNumber]["weather"][0]["main"] == "Rain"){
+                        ICONOFDAY.src = "img/weatherIcons/rainIcon.png"
+                        console.log("ui")
+                    }
+                    else if(data["daily"][dayOfWeekNumber]["weather"][0]["main"] == "Clear"){
+                        ICONOFDAY.insertBefore(url("img/weatherIcons/rainIcon.png"))
+                    }
+                    else if(data["daily"][dayOfWeekNumber]["weather"][0]["main"] == "Clouds"){
+                        ICONOFDAY.src = "img/weatherIcons/cloud.png"
+                    }
+                    else if(data["daily"][dayOfWeekNumber]["weather"][0]["main"] == "Drizzle"){
+                        ICONOFDAY.src = "img/weatherIcons/drizzleIcon.png"
+                    }
+                    else if(data["daily"][dayOfWeekNumber]["weather"][0]["main"] == "Snow"){
+                        ICONOFDAY.src = "img/weatherIcons/snowIcon.png"
+                    }
+                    else if(data["daily"][dayOfWeekNumber]["weather"][0]["main"] == "Thunderstorm"){
+                        ICONOFDAY.src = "img/weatherIcons/stormIcon.png"
+                    }
                 })
             })
         })
