@@ -1,5 +1,11 @@
 let lon
 let lat
+latestResearch = []
+document.addEventListener("keypress", function(e){
+    if(e.key === "Enter" || e.key == "End"){
+        search()
+    }
+})
 const CITY = document.querySelector("input")
 let limit = 1
 const KEY = "9dc46f67dfcdd64dfca56c839c8359f2"// key of api
@@ -19,8 +25,20 @@ const COUNTRY = document.querySelector("span.country")
 const FEELSLIKE = document.querySelector("span.feelsLike")
 const SUNSET = document.querySelector("span.sunset")
 const ICONOFDAY = document.querySelector('div.forecast__main___controlContainer')
+const CITYONWINDOW = document.querySelectorAll("img.imgCity")
+const NAMEOFCITYONWINDOW = document.querySelectorAll("figcaption")
 
 function search(){
+    console.log(latestResearch.length)
+    if(latestResearch.length < 4){
+        console.log("lista")
+        latestResearch.push(CITY.value)
+    }
+    else{
+        console.log("else")
+        latestResearch.pop()
+        latestResearch.push(CITY.value)
+    }
     fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${CITY.value}&limit=${limit}&appid=${KEY}`)//request to get the latitude and longitude of the city that user wants to see the weather forecast
     .then(response => {
         response.json()
@@ -35,7 +53,7 @@ function search(){
                 .then(data => {
                     //setting the rain probability on html
                     for(let i = 0; i < 7; i++){
-                        let rain = data["daily"][i]["rain"]//pega a informação da chuva
+                        let rain = data["daily"][i]["humidity"]//pega a informação da chuva
                         
                         if(rain == undefined){//não tem porbabilidade de chuva = rain indefined
                             let no = document.createTextNode("0")
@@ -108,7 +126,6 @@ function search(){
 
                     let dayOfWeekNumber = date.getDay()
                     dayHour = date.getHours()
-                    console.log(dayHour)
 
                     if(dayHour >= 1 && dayHour <= 12){
                         console.log("morning")
@@ -119,7 +136,6 @@ function search(){
 
                         let feelsLikeInformation = data["daily"][dayOfWeekNumber]["feels_like"]["morn"]
                         feelsLikeInformation = document.createTextNode(feelsLikeInformation)
-                        console.log(feelsLikeInformation)
                         FEELSLIKE.innerText = ""
                         FEELSLIKE.appendChild(feelsLikeInformation)
                     }
@@ -127,7 +143,6 @@ function search(){
                         console.log("day")
                         let tempNowWindow = data["daily"][dayOfWeekNumber]["temp"]["day"]
                         tempNowWindow = document.createTextNode(tempNowWindow)
-                        console.log(TEMPNOW)
                         TEMPNOW.innerText = ""
                         TEMPNOW.appendChild(tempNowWindow)
 
@@ -146,7 +161,6 @@ function search(){
 
                         let feelsLikeInformation = data["daily"][dayOfWeekNumber]["feels_like"]["eve"]
                         feelsLikeInformation = document.createTextNode(feelsLikeInformation)
-                        console.log(feelsLikeInformation)
                         FEELSLIKE.innerText = ""
                         FEELSLIKE.appendChild(feelsLikeInformation)
                     }
@@ -159,7 +173,6 @@ function search(){
 
                         let feelsLikeInformation = data["daily"][dayOfWeekNumber]["feels_like"]["nigh"]
                         feelsLikeInformation = document.createTextNode(feelsLikeInformation)
-                        console.log(feelsLikeInformation)
                         FEELSLIKE.innerText = ""
                         FEELSLIKE.appendChild(feelsLikeInformation)
                     }
@@ -179,7 +192,6 @@ function search(){
 
                     if(data["daily"][dayOfWeekNumber]["weather"][0]["main"] == "Rain"){
                         ICONOFDAY.src = "img/weatherIcons/rainIcon.png"
-                        console.log("ui")
                     }
                     else if(data["daily"][dayOfWeekNumber]["weather"][0]["main"] == "Clear"){
                         ICONOFDAY.insertBefore(url("img/weatherIcons/rainIcon.png"))
@@ -195,6 +207,14 @@ function search(){
                     }
                     else if(data["daily"][dayOfWeekNumber]["weather"][0]["main"] == "Thunderstorm"){
                         ICONOFDAY.src = "img/weatherIcons/stormIcon.png"
+                    }
+                    
+                    console.log(NAMEOFCITYONWINDOW)
+                    for(let i = 0; i < 4; i++){
+                        NAMEOFCITYONWINDOW[i].innerText = ""
+                        NAMEOFCITYONWINDOW[i].innerText = latestResearch[i]
+                        NAMEOFCITYONWINDOW.img.src= "img/img-teste/curitiba.png"
+                        console.log(latestResearch[i])
                     }
                 })
             })
