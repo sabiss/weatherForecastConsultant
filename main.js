@@ -4,24 +4,6 @@ latestResearch = []
 const CITY = document.querySelector("input")
 let limit = 1
 const KEY = "9dc46f67dfcdd64dfca56c839c8359f2"// key of api
-const PRECIPITATION = document.querySelectorAll("span.probabilityP")//all the tags that indicate probability rain
-const WEATHERICONS = ["img/weatherIcons/rainIcon.png", "img/weatherIcons/cloud.png","img/weatherIcons/stormIcon.png", "img/weatherIcons/sunBehindCloudIcon.png", "img/weatherIcons/sunIcon.png", "img/weatherIcons/windIcon.png", "img/weatherIcons/showIcon.png", "img/weatherIcons/drizzleIcon.png"]// an array with all the weather icons
-const ICONS = document.querySelectorAll("img.statusIcon")
-const MIMTEMPP = document.querySelectorAll("span.minTempP")
-const MAXTEMPP = document.querySelectorAll("span.maxTempP")
-const REDBARS = document.querySelectorAll("div.redBar")
-const GREYBARS = document.querySelectorAll("div.greyBar")
-let day = document.querySelector("span.dayOfWeek")
-let daynumber = document.querySelector("span.dayOfWeekNumber")
-let mouthHtml = document.querySelector("span.mouthOfUser")
-const TEMPNOW = document.querySelector("span.currentTemperature")
-const RESEARCHEDCITY = document.querySelector("span.researchedCity")
-const COUNTRY = document.querySelector("span.country")
-const FEELSLIKE = document.querySelector("span.feelsLike")
-const SUNSET = document.querySelector("span.sunset")
-const ICONOFDAY = document.querySelector('div.forecast__main___controlContainer')
-const CITYONWINDOW = document.querySelectorAll("img.imgCity")
-const NAMEOFCITYONWINDOW = document.querySelectorAll("figcaption")
 
 //when the user search
 document.addEventListener("keypress", function(e){
@@ -53,6 +35,7 @@ function search(){
     .then(response => {
         response.json()
         .then(data => {
+            const COUNTRY = document.querySelector("span.country")
             let countryName = data[0]["country"]
             COUNTRY.innerText = countryName
             lat = data[0]["lat"]
@@ -62,6 +45,7 @@ function search(){
                 response.json()
                 .then(data => {
                     //setting the humidity on html
+                    const PRECIPITATION = document.querySelectorAll("span.probabilityP")//all the tags that indicate probability rain
                     for(let i = 0; i < 7; i++){
                         let rain = data["daily"][i]["humidity"]//pega a informação da chuva
                         
@@ -76,6 +60,8 @@ function search(){
                         }
                     }
                     //setting day weather status in html img tags
+                    const WEATHERICONS = ["img/weatherIcons/rainIcon.png", "img/weatherIcons/cloud.png","img/weatherIcons/stormIcon.png", "img/weatherIcons/sunBehindCloudIcon.png", "img/weatherIcons/sunIcon.png", "img/weatherIcons/windIcon.png", "img/weatherIcons/showIcon.png", "img/weatherIcons/drizzleIcon.png"]// an array with all the weather icons
+                    const ICONS = document.querySelectorAll("img.statusIcon")
                     for(let i = 0; i < 7; i++){
                         if(data["daily"][i]["weather"][0]["main"] == "Rain"){//verificando se vai chover//pegando a img daquele dia no html
                             ICONS[i].src = WEATHERICONS[0]//colocando a src dele para o icon de chuva
@@ -98,6 +84,10 @@ function search(){
                         
                     }
                     //adjusting maximum and minimum temperature chart information
+                    const MIMTEMPP = document.querySelectorAll("span.minTempP")
+                    const MAXTEMPP = document.querySelectorAll("span.maxTempP")
+                    const REDBARS = document.querySelectorAll("div.redBar")
+                    const GREYBARS = document.querySelectorAll("div.greyBar")
                     for(let i = 0; i < 7; i++){
                         let max = data["daily"][i]["temp"]["max"]
                         let min = data["daily"][i]["temp"]["min"]
@@ -120,16 +110,19 @@ function search(){
                     const MOUTH = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
 
                     //showing the current month in the now day
+                    let mouthHtml = document.querySelector("span.mouthOfUser")
                     let mouthOfUser = MOUTH[date.getMonth()]
                     let mouth = document.createTextNode(mouthOfUser)
                     mouthHtml.innerText = ""
                     mouthHtml.appendChild(mouth)
 
                     //showing the name of the day of the week
+                    let day = document.querySelector("span.dayOfWeek")
                     let dayOfWeek = WEEK[date.getDay()]//pegando o índice que se refere ao dia da semana na lista
                     day.innerText = dayOfWeek
 
                     //showing the day number
+                    let daynumber = document.querySelector("span.dayOfWeekNumber")
                     let number = date.getDate()
                     number = document.createTextNode(number)
                     daynumber.innerText = ""
@@ -140,6 +133,8 @@ function search(){
                     let dayOfWeekNumber = date.getDay()
                     dayHour = date.getHours()
 
+                    const TEMPNOW = document.querySelector("span.currentTemperature")
+                    const FEELSLIKE = document.querySelector("span.feelsLike")
                     //showing current temperature and the feels like based on time of day
                     if(dayHour >= 1 && dayHour <= 12){
                         console.log("morning")
@@ -200,10 +195,14 @@ function search(){
                     if(CITY.value == null || CITY.value == undefined || CITY.value == ''){
                         cityName = "Brasília"
                     }
+
+                    const RESEARCHEDCITY = document.querySelector("span.researchedCity")
+
                     RESEARCHEDCITY.innerText = ""
                     RESEARCHEDCITY.innerText = cityName[0].toUpperCase() + cityName.slice(1).toLowerCase()
 
                     //showing the sunset hour
+                    const SUNSET = document.querySelector("span.sunset")
                     let sunsetInformation = data["daily"][dayOfWeekNumber]["sunset"]
                     sunsetInformation = new Date(sunsetInformation*1000)
                     let sunsetInformationHours = sunsetInformation.getHours()
@@ -213,6 +212,8 @@ function search(){
                     SUNSET.innerText = ""
                     SUNSET.appendChild(sunsetInformation)
 
+                    const ICONOFDAY = document.querySelector('div.forecast__main___controlContainer')
+                    
                     if(data["daily"][dayOfWeekNumber]["weather"][0]["main"] == "Rain"){
                         ICONOFDAY.src = "img/weatherIcons/rainIcon.png"
                     }
@@ -232,6 +233,8 @@ function search(){
                         ICONOFDAY.src = "img/weatherIcons/stormIcon.png"
                     }
                     
+                    const CITYONWINDOW = document.querySelectorAll("img.imgCity")
+                    const NAMEOFCITYONWINDOW = document.querySelectorAll("figcaption")
                     // for(let i = 0; i < 48; i++){
                     //     if(data["hourly"][i][dt] == )
                     // }
