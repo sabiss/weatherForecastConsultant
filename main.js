@@ -1,5 +1,5 @@
 //pattern forecast
-search()
+// search()
 let lon
 let lat
 latestResearch = []
@@ -44,15 +44,18 @@ function search(){
     //     latestResearch.pop()
     //     latestResearch.push(CITY.value)
     // }
-
+    if(window.width< 1200){
+        const FORECASTNOW = document.querySelector("section.forecast")
+        window.scrollTo(FORECASTNOW)
+    }
     //padrão
-    if(CITY.value == null || CITY.value == undefined || CITY.value == ''){
-        let valueCityInput = "Brasília"
-    }
-    else{
-        let valueCityInput = CITY.value
-    }
-    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${valueCityInput}&limit=${limit}&appid=${KEY}`)//request to get the latitude and longitude of the city that user wants to see the weather forecast
+    // if(CITY.value == null || CITY.value == undefined || CITY.value == ''){
+    //     let valueCityInput = "Brasília"
+    // }
+    // else{
+    //     let valueCityInput = CITY.value
+    // }
+    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${CITY.value}&limit=${limit}&appid=${KEY}`)//request to get the latitude and longitude of the city that user wants to see the weather forecast
     .then(response => {
         response.json()
         .then(data => {
