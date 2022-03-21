@@ -109,7 +109,13 @@ figcaption{
     text-align: center;
 }
 .minTemp p, .maxTemp p{
-    padding: 15px;
+    padding: 10px;
+}
+.minTemp p:first-child{
+    padding: 0px;
+}
+.maxTemp p:first-child{
+    padding: 0px;
 }
 .statusOfWeather{
     justify-self: center;
@@ -309,7 +315,22 @@ figcaption{
     text-align: center;
     margin-top: 20px;
 }
+.dot{
+    text-align: center;
+}
 @media only screen and (max-width: 900px){
+    .statusIcon{
+        width: 30px;
+    }
+    .minTemp p, .maxTemp p{
+        font-size: 0.9rem;
+    }
+    .statusOfWeather img{
+        padding: 5px;
+    }
+    .statusOfWeather img:first-child{
+        padding: 0px;
+    }
     body{
         flex-direction: column;
     }
@@ -335,6 +356,9 @@ figcaption{
     .column__graphicBox div{
         margin: 0px 10px;
         width: 15px;
+    }
+    .graphic{
+        display: none;
     }
     .column__graphicBox___p{
         font-size: 12px;
