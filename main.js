@@ -1,5 +1,3 @@
-//pattern forecast
-// search()
 let lon
 let lat
 latestResearch = []
@@ -25,7 +23,6 @@ const ICONOFDAY = document.querySelector('div.forecast__main___controlContainer'
 const CITYONWINDOW = document.querySelectorAll("img.imgCity")
 const NAMEOFCITYONWINDOW = document.querySelectorAll("figcaption")
 
-
 //when the user search
 document.addEventListener("keypress", function(e){
     if(e.key === "Enter" || e.key == "End"){
@@ -44,18 +41,15 @@ function search(){
     //     latestResearch.pop()
     //     latestResearch.push(CITY.value)
     // }
-    if(window.width< 1200){
-        const FORECASTNOW = document.querySelector("section.forecast")
-        window.scrollTo(FORECASTNOW)
+    //pattern
+    let valueCityInput;
+    if(CITY.value == null || CITY.value == undefined || CITY.value == ''){
+        valueCityInput = "Brasília"
     }
-    //padrão
-    // if(CITY.value == null || CITY.value == undefined || CITY.value == ''){
-    //     let valueCityInput = "Brasília"
-    // }
-    // else{
-    //     let valueCityInput = CITY.value
-    // }
-    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${CITY.value}&limit=${limit}&appid=${KEY}`)//request to get the latitude and longitude of the city that user wants to see the weather forecast
+    else{
+        valueCityInput = CITY.value
+    }
+    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${valueCityInput}&limit=${limit}&appid=${KEY}`)//request to get the latitude and longitude of the city that user wants to see the weather forecast
     .then(response => {
         response.json()
         .then(data => {
@@ -153,6 +147,7 @@ function search(){
                         tempNowWindow = document.createTextNode(tempNowWindow)
                         TEMPNOW.innerText = ""
                         TEMPNOW.appendChild(tempNowWindow)
+                        console.log(TEMPNOW)
 
                         let feelsLikeInformation = data["daily"][dayOfWeekNumber]["feels_like"]["morn"]
                         feelsLikeInformation = document.createTextNode(feelsLikeInformation)
@@ -165,6 +160,7 @@ function search(){
                         tempNowWindow = document.createTextNode(tempNowWindow)
                         TEMPNOW.innerText = ""
                         TEMPNOW.appendChild(tempNowWindow)
+                        console.log(TEMPNOW)
 
                         let feelsLikeInformation = data["daily"][dayOfWeekNumber]["feels_like"]["day"]
                         feelsLikeInformation = document.createTextNode(feelsLikeInformation)
@@ -178,20 +174,22 @@ function search(){
                         tempNowWindow = document.createTextNode(tempNowWindow)
                         TEMPNOW.innerText = ""
                         TEMPNOW.appendChild(tempNowWindow)
+                        console.log(TEMPNOW)
 
                         let feelsLikeInformation = data["daily"][dayOfWeekNumber]["feels_like"]["eve"]
                         feelsLikeInformation = document.createTextNode(feelsLikeInformation)
                         FEELSLIKE.innerText = ""
                         FEELSLIKE.appendChild(feelsLikeInformation)
+                        console.log(TEMPNOW)
                     }
                     else if(dayHour >=19 && dayHour <= 23){
                         console.log("night")
-                        let tempNowWindow = data["daily"][dayOfWeekNumber]["temp"]["nigh"]
+                        let tempNowWindow = data["daily"][dayOfWeekNumber]["temp"]["night"]
                         tempNowWindow = document.createTextNode(tempNowWindow)
                         TEMPNOW.innerText = ""
                         TEMPNOW.appendChild(tempNowWindow)
 
-                        let feelsLikeInformation = data["daily"][dayOfWeekNumber]["feels_like"]["nigh"]
+                        let feelsLikeInformation = data["daily"][dayOfWeekNumber]["feels_like"]["night"]
                         feelsLikeInformation = document.createTextNode(feelsLikeInformation)
                         FEELSLIKE.innerText = ""
                         FEELSLIKE.appendChild(feelsLikeInformation)
@@ -199,6 +197,9 @@ function search(){
 
                     //showing the name of the search city
                     let cityName = CITY.value
+                    if(CITY.value == null || CITY.value == undefined || CITY.value == ''){
+                        cityName = "Brasília"
+                    }
                     RESEARCHEDCITY.innerText = ""
                     RESEARCHEDCITY.innerText = cityName[0].toUpperCase() + cityName.slice(1).toLowerCase()
 
@@ -215,9 +216,9 @@ function search(){
                     if(data["daily"][dayOfWeekNumber]["weather"][0]["main"] == "Rain"){
                         ICONOFDAY.src = "img/weatherIcons/rainIcon.png"
                     }
-                    else if(data["daily"][dayOfWeekNumber]["weather"][0]["main"] == "Clear"){
-                        ICONOFDAY.insertBefore(url("img/weatherIcons/rainIcon.png"))
-                    }
+                    // else if(data["daily"][dayOfWeekNumber]["weather"][0]["main"] == "Clear"){
+                    //     ICONOFDAY.insertBefore(url("img/weatherIcons/rainIcon.png"))
+                    // }
                     else if(data["daily"][dayOfWeekNumber]["weather"][0]["main"] == "Clouds"){
                         ICONOFDAY.src = "img/weatherIcons/cloud.png"
                     }
@@ -248,4 +249,7 @@ function search(){
     .catch(error =>{
         console.log(error)
     })
+    //pattern forecast
 }
+//pattern forecast
+search()
