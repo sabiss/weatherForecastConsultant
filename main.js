@@ -1,11 +1,8 @@
+//pattern forecast
+search()
 let lon
 let lat
 latestResearch = []
-document.addEventListener("keypress", function(e){
-    if(e.key === "Enter" || e.key == "End"){
-        search()
-    }
-})
 const CITY = document.querySelector("input")
 let limit = 1
 const KEY = "9dc46f67dfcdd64dfca56c839c8359f2"// key of api
@@ -28,18 +25,34 @@ const ICONOFDAY = document.querySelector('div.forecast__main___controlContainer'
 const CITYONWINDOW = document.querySelectorAll("img.imgCity")
 const NAMEOFCITYONWINDOW = document.querySelectorAll("figcaption")
 
+
+//when the user search
+document.addEventListener("keypress", function(e){
+    if(e.key === "Enter" || e.key == "End"){
+        search()
+    }
+})
+
 function search(){
-    console.log(latestResearch.length)
-    if(latestResearch.length < 4){
-        console.log("lista")
-        latestResearch.push(CITY.value)
+    // console.log(latestResearch.length)
+    // if(latestResearch.length < 4){
+    //     console.log("lista")
+    //     latestResearch.push(CITY.value)
+    // }
+    // else{
+    //     console.log("else")
+    //     latestResearch.pop()
+    //     latestResearch.push(CITY.value)
+    // }
+
+    //padrão
+    if(CITY.value == null || CITY.value == undefined || CITY.value == ''){
+        let valueCityInput = "Brasília"
     }
     else{
-        console.log("else")
-        latestResearch.pop()
-        latestResearch.push(CITY.value)
+        let valueCityInput = CITY.value
     }
-    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${CITY.value}&limit=${limit}&appid=${KEY}`)//request to get the latitude and longitude of the city that user wants to see the weather forecast
+    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${valueCityInput}&limit=${limit}&appid=${KEY}`)//request to get the latitude and longitude of the city that user wants to see the weather forecast
     .then(response => {
         response.json()
         .then(data => {
@@ -51,7 +64,7 @@ function search(){
             .then(response=>{
                 response.json()
                 .then(data => {
-                    //setting the rain probability on html
+                    //setting the humidity on html
                     for(let i = 0; i < 7; i++){
                         let rain = data["daily"][i]["humidity"]//pega a informação da chuva
                         
@@ -65,7 +78,6 @@ function search(){
                             PRECIPITATION[i].appendChild(no)//colocando a porbabilidade no html
                         }
                     }
-                    //NÃO TA CHEGANDO AQUI
                     //setting day weather status in html img tags
                     for(let i = 0; i < 7; i++){
                         if(data["daily"][i]["weather"][0]["main"] == "Rain"){//verificando se vai chover//pegando a img daquele dia no html
@@ -105,18 +117,22 @@ function search(){
                         MIMTEMPP[i].appendChild(min)
                         MAXTEMPP[i].appendChild(max)
                     }
+                    //getting date information
                     var date = new Date()
                     const WEEK = ["Domingo-Feira", "Segunda-Feira", "Terça-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira", "Sábado"]
                     const MOUTH = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
 
+                    //showing the current month in the now day
                     let mouthOfUser = MOUTH[date.getMonth()]
                     let mouth = document.createTextNode(mouthOfUser)
                     mouthHtml.innerText = ""
                     mouthHtml.appendChild(mouth)
 
+                    //showing the name of the day of the week
                     let dayOfWeek = WEEK[date.getDay()]//pegando o índice que se refere ao dia da semana na lista
                     day.innerText = dayOfWeek
 
+                    //showing the day number
                     let number = date.getDate()
                     number = document.createTextNode(number)
                     daynumber.innerText = ""
@@ -127,6 +143,7 @@ function search(){
                     let dayOfWeekNumber = date.getDay()
                     dayHour = date.getHours()
 
+                    //showing current temperature and the feels like based on time of day
                     if(dayHour >= 1 && dayHour <= 12){
                         console.log("morning")
                         let tempNowWindow = data["daily"][dayOfWeekNumber]["temp"]["morn"]
@@ -177,10 +194,12 @@ function search(){
                         FEELSLIKE.appendChild(feelsLikeInformation)
                     }
 
+                    //showing the name of the search city
                     let cityName = CITY.value
                     RESEARCHEDCITY.innerText = ""
                     RESEARCHEDCITY.innerText = cityName[0].toUpperCase() + cityName.slice(1).toLowerCase()
-                    
+
+                    //showing the sunset hour
                     let sunsetInformation = data["daily"][dayOfWeekNumber]["sunset"]
                     sunsetInformation = new Date(sunsetInformation*1000)
                     let sunsetInformationHours = sunsetInformation.getHours()
@@ -209,13 +228,16 @@ function search(){
                         ICONOFDAY.src = "img/weatherIcons/stormIcon.png"
                     }
                     
-                    console.log(NAMEOFCITYONWINDOW)
-                    for(let i = 0; i < 4; i++){
-                        NAMEOFCITYONWINDOW[i].innerText = ""
-                        NAMEOFCITYONWINDOW[i].innerText = latestResearch[i]
-                        NAMEOFCITYONWINDOW.img.src= "img/img-teste/curitiba.png"
-                        console.log(latestResearch[i])
-                    }
+                    // for(let i = 0; i < 48; i++){
+                    //     if(data["hourly"][i][dt] == )
+                    // }
+                    // console.log(NAMEOFCITYONWINDOW)
+                    // for(let i = 0; i < 4; i++){
+                    //     NAMEOFCITYONWINDOW[i].innerText = ""
+                    //     NAMEOFCITYONWINDOW[i].innerText = latestResearch[i]
+                    //     NAMEOFCITYONWINDOW.img.src= "img/img-teste/curitiba.png"
+                    //     console.log(latestResearch[i])
+                    // }
                 })
             })
         })
