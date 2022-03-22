@@ -2,8 +2,8 @@ let lon
 let lat
 latestResearch = []
 const CITY = document.querySelector("input")
-let limit = 1
-const KEY = "9dc46f67dfcdd64dfca56c839c8359f2"// key of api
+const WEATHERKEY = "9dc46f67dfcdd64dfca56c839c8359f2"// key of OpenWeatherForecast api
+const FLICKRKEY = `118d64425544ea8d186c43fb0a75f2b0`// key of Flickr API
 
 //when the user search
 document.addEventListener("keypress", function(e){
@@ -25,13 +25,14 @@ function search(){
     // }
     //pattern
     let valueCityInput;
+
     if(CITY.value == null || CITY.value == undefined || CITY.value == ''){
         valueCityInput = "Brasília"
     }
     else{
         valueCityInput = CITY.value
     }
-    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${valueCityInput}&limit=${limit}&appid=${KEY}`)//request to get the latitude and longitude of the city that user wants to see the weather forecast
+    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${valueCityInput}&limit=1&appid=${WEATHERKEY}`)//request to get the latitude and longitude of the city that user wants to see the weather forecast
     .then(response => {
         response.json()
         .then(data => {
@@ -40,7 +41,8 @@ function search(){
             COUNTRY.innerText = countryName
             lat = data[0]["lat"]
             lon = data[0]["lon"]
-            fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&lang=pt_br&exclude=current,minutely&appid=${KEY}`)//putting the latitude and longitude on the request to get the weather information
+            console.log(data)
+            fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&lang=pt_br&exclude=current,minutely&appid=${WEATHERKEY}`)//putting the latitude and longitude on the request to get the weather information
             .then(response=>{
                 response.json()
                 .then(data => {
@@ -108,7 +110,7 @@ function search(){
                     var date = new Date()
                     const WEEK = ["Domingo-Feira", "Segunda-Feira", "Terça-Feira", "Quarta-Feira", "Quinta-Feira", "Sexta-Feira", "Sábado"]
                     const MOUTH = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"]
-
+                    
                     //showing the current month in the now day
                     let mouthHtml = document.querySelector("span.mouthOfUser")
                     let mouthOfUser = MOUTH[date.getMonth()]
@@ -120,6 +122,28 @@ function search(){
                     let day = document.querySelector("span.dayOfWeek")
                     let dayOfWeek = WEEK[date.getDay()]//pegando o índice que se refere ao dia da semana na lista
                     day.innerText = dayOfWeek
+                    //putting the right status icon of the day
+                    const CURRENTFORECASTSTATUSICON = document.querySelector('div.CURRENTFORECASTSTATUSICON')
+                    let indexOfDay = date.getDay()
+                    console.log(indexOfDay)
+                    if(data["daily"][indexOfDay]["weather"][0]["main"] == "Rain"){
+                        CURRENTFORECASTSTATUSICON.classList.add("rain");
+                    }
+                    else if(data["daily"][indexOfDay]["weather"][0]["main"] == "Clear"){
+                        CURRENTFORECASTSTATUSICON.classList.add("sunny");
+                    }
+                    else if(data["daily"][indexOfDay]["weather"][0]["main"] == "Snow"){
+                        CURRENTFORECASTSTATUSICON.classList.add("snow");
+                    }
+                    else if(data["daily"][indexOfDay]["weather"][0]["main"] == "Thunderstorm"){
+                        CURRENTFORECASTSTATUSICON.classList.add("storm");
+                    }
+                    else if(data["daily"][indexOfDay]["weather"][0]["main"] == "Cloud"){
+                        CURRENTFORECASTSTATUSICON.classList.add("cloud");
+                    }
+                    else if(data["daily"][indexOfDay]["weather"][0]["main"] == "Drizzle"){
+                        CURRENTFORECASTSTATUSICON.classList.add("drizzle");
+                    }
 
                     //showing the day number
                     let daynumber = document.querySelector("span.dayOfWeekNumber")
@@ -155,11 +179,9 @@ function search(){
                         tempNowWindow = document.createTextNode(tempNowWindow)
                         TEMPNOW.innerText = ""
                         TEMPNOW.appendChild(tempNowWindow)
-                        console.log(TEMPNOW)
 
                         let feelsLikeInformation = data["daily"][dayOfWeekNumber]["feels_like"]["day"]
                         feelsLikeInformation = document.createTextNode(feelsLikeInformation)
-                        console.log(feelsLikeInformation)
                         FEELSLIKE.innerText = ""
                         FEELSLIKE.appendChild(feelsLikeInformation)
                     }
@@ -169,13 +191,11 @@ function search(){
                         tempNowWindow = document.createTextNode(tempNowWindow)
                         TEMPNOW.innerText = ""
                         TEMPNOW.appendChild(tempNowWindow)
-                        console.log(TEMPNOW)
 
                         let feelsLikeInformation = data["daily"][dayOfWeekNumber]["feels_like"]["eve"]
                         feelsLikeInformation = document.createTextNode(feelsLikeInformation)
                         FEELSLIKE.innerText = ""
                         FEELSLIKE.appendChild(feelsLikeInformation)
-                        console.log(TEMPNOW)
                     }
                     else if(dayHour >=19 && dayHour <= 23){
                         console.log("night")
@@ -211,27 +231,6 @@ function search(){
                     sunsetInformation = document.createTextNode(sunsetInformation)
                     SUNSET.innerText = ""
                     SUNSET.appendChild(sunsetInformation)
-
-                    const ICONOFDAY = document.querySelector('div.forecast__main___controlContainer')
-                    
-                    if(data["daily"][dayOfWeekNumber]["weather"][0]["main"] == "Rain"){
-                        ICONOFDAY.src = "img/weatherIcons/rainIcon.png"
-                    }
-                    // else if(data["daily"][dayOfWeekNumber]["weather"][0]["main"] == "Clear"){
-                    //     ICONOFDAY.insertBefore(url("img/weatherIcons/rainIcon.png"))
-                    // }
-                    else if(data["daily"][dayOfWeekNumber]["weather"][0]["main"] == "Clouds"){
-                        ICONOFDAY.src = "img/weatherIcons/cloud.png"
-                    }
-                    else if(data["daily"][dayOfWeekNumber]["weather"][0]["main"] == "Drizzle"){
-                        ICONOFDAY.src = "img/weatherIcons/drizzleIcon.png"
-                    }
-                    else if(data["daily"][dayOfWeekNumber]["weather"][0]["main"] == "Snow"){
-                        ICONOFDAY.src = "img/weatherIcons/snowIcon.png"
-                    }
-                    else if(data["daily"][dayOfWeekNumber]["weather"][0]["main"] == "Thunderstorm"){
-                        ICONOFDAY.src = "img/weatherIcons/stormIcon.png"
-                    }
                     
                     const CITYONWINDOW = document.querySelectorAll("img.imgCity")
                     const NAMEOFCITYONWINDOW = document.querySelectorAll("figcaption")
@@ -252,7 +251,6 @@ function search(){
     .catch(error =>{
         console.log(error)
     })
-    //pattern forecast
 }
 //pattern forecast
 search()
