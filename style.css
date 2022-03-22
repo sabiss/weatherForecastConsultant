@@ -216,10 +216,50 @@ figcaption{
     font-weight: bold;
     margin-bottom: 10px;
 }
-.forecast__main___controlContainer::before{
-    content: url(img/weatherIcons/windIcon50.png);
+.forecast__main___controlContainer{
     align-self: center;
     margin-right: 15px;
+    display: flex;
+    width: 100%;
+}
+.CURRENTFORECASTSTATUSICON{
+    height: 70px;
+}
+.sunny{
+    margin-right: 12px;
+    content: url("img/weatherIcons/sunIcon.png");
+    display: flex;
+    align-self: center;
+}
+.rain{
+    margin-right: 12px;
+    content: url("img/weatherIcons/rainIcon.png");
+    display: flex;
+    align-self: center;
+}
+.cloud{
+    margin-right: 12px;
+    content: url("img/weatherIcons/cloud.png");
+    display: flex;
+    align-self: center;
+}
+.storm{
+    margin-right: 12px;
+    content: url("img/weatherIcons/stormIcon.png");
+    display: flex;
+    align-self: center;
+}
+.drizzle{
+    margin-right: 12px;
+    content: url("img/weatherIcons/drizzleIcon.png");
+    display: flex;
+    align-self: center;
+}
+.snow{
+    margin-right: 12px;
+    content: url("img/weatherIcons/showIcon.png");
+    display: flex;
+    align-self: center;
 }
 .forecast__main___littleContainer p{
     color: var(--grey);
@@ -318,6 +358,7 @@ figcaption{
 .dot{
     text-align: center;
 }
+
 @media only screen and (max-width: 900px){
     .statusIcon{
         width: 30px;
