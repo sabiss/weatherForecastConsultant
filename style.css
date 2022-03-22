@@ -262,7 +262,7 @@ figcaption{
 }
 .snow{
     margin-right: 12px;
-    content: url("img/weatherIcons/showIcon.png");
+    content: url("img/weatherIcons/snowIcon.png");
     display: flex;
     align-self: center;
 }
