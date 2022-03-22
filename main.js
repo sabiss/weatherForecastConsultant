@@ -5,6 +5,16 @@ const CITY = document.querySelector("input")
 const WEATHERKEY = "9dc46f67dfcdd64dfca56c839c8359f2"// key of OpenWeatherForecast api
 const FLICKRKEY = `118d64425544ea8d186c43fb0a75f2b0`// key of Flickr API
 
+if(window.screen.width < 1000){
+    console.log("entrou")
+    const SECTIONMOBILE = document.querySelector("section.mobileForecast")
+    const SECTIONHOME = document.querySelector("section.home")
+    const SECTIONFORECASTDESKTOP = document.querySelector("section.forecast")
+
+    SECTIONFORECASTDESKTOP.style.display = "none"
+    SECTIONHOME.style.display = 'none'
+    SECTIONMOBILE.style.display = 'flex'
+}
 //when the user search
 document.addEventListener("keypress", function(e){
     if(e.key === "Enter" || e.key == "End"){

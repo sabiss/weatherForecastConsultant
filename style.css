@@ -138,7 +138,12 @@ figcaption{
 .maxTemp{
     text-align: center;
 }
-.forecast{
+.mobileForecast{
+    display: none;
+    padding: 20px;
+    flex-direction: column;
+}
+.forecast, .mobileForecast{
     position: relative;
     z-index: -1 ;
     width: 40%;
@@ -359,7 +364,19 @@ figcaption{
     text-align: center;
 }
 
-@media only screen and (max-width: 900px){
+@media only screen and (max-width: 359px){
+    .week-forecast{
+        color: white;
+    }
+    .week-forecast h3{
+        color: var(--grey)
+    }
+    .forecast__header{
+        padding: 30px 10px;
+    }
+    input{
+        width: 170px;
+    }
     .statusIcon{
         width: 30px;
     }
@@ -378,7 +395,7 @@ figcaption{
     .cities-image{
         display: none;
     }
-    .home, .forecast{
+    .home, .forecast, .mobileForecast{
         width: 100%;
         padding: 0px;
     }
@@ -403,6 +420,156 @@ figcaption{
     }
     .column__graphicBox___p{
         font-size: 12px;
+    }
+    .forecast__main{
+        padding: 0px 10px 10px 10px;
+    }
+    .clouds{
+        width: 200px;
+    }
+}
+@media only screen and (min-width: 380px) and (max-width:699px){
+    .week-forecast{
+        color: white;
+    }
+    .week-forecast h3{
+        color: var(--grey)
+    }
+    .forecast__header{
+        padding: 30px 10px;
+    }
+    input{
+        width: 200px;
+    }
+    .statusIcon{
+        width: 30px;
+    }
+    .minTemp p, .maxTemp p{
+        font-size: 0.9rem;
+    }
+    .statusOfWeather img{
+        padding: 5px;
+    }
+    .statusOfWeather img:first-child{
+        padding: 0px;
+    }
+    body{
+        flex-direction: column;
+    }
+    .cities-image{
+        display: none;
+    }
+    .home, .forecast, .mobileForecast{
+        width: 100%;
+        padding: 0px;
+    }
+    .titles h1{
+        text-align: center;
+    }
+    .titles h3{
+        display: none;
+    }
+    .header__box{
+        justify-self: center;
+    }
+    .graphicBox{
+        font-size: 15px;
+    }
+    .column__graphicBox div{
+        margin: 0px 10px;
+        width: 15px;
+    }
+    .graphic{
+        display: none;
+    }
+    .column__graphicBox___p{
+        font-size: 12px;
+    }
+    .forecast__main{
+        padding: 0px 10px 10px 10px;
+    }
+    .clouds{
+        width: 200px;
+    }
+}
+@media only screen and (min-width: 700px) and (max-width:900px){
+    .day h3{
+        font-size: 1.7rem;
+    }
+    .day p{
+        font-size: 1.4rem;
+    }
+    .probabilityRain p{
+        font-size: 1.3rem;
+    }
+    .statusOfWeather img{
+        width: 40px;
+    }
+    .minTemp p, .maxTemp p{
+        font-size: 1.3rem;
+    }
+    .week-forecast{
+        color: white;
+    }
+    .week-forecast h3{
+        color: var(--grey)
+    }
+    .column__graphicBox{
+        font-size: 1.3rem;
+    }
+    .column__graphicBox___p{
+        font-size: 1.2rem;
+    }
+    body{
+        font-size: 1.7em;
+    }
+    .forecast__main___littleContainer h2{
+        font-size: 2.2rem;
+    }
+    .forecast__header{
+        padding: 30px 10px;
+    }
+    input{
+        width: 400px;
+        font-size: 1.1rem;
+    }
+    .statusIcon{
+        width: 30px;
+    }
+    .statusOfWeather img{
+        padding: 5px;
+    }
+    .statusOfWeather img:first-child{
+        padding: 0px;
+    }
+    body{
+        flex-direction: column;
+    }
+    .cities-image{
+        display: none;
+    }
+    .home, .forecast, .mobileForecast{
+        width: 100%;
+        padding: 0px;
+    }
+    .titles h1{
+        text-align: center;
+    }
+    .titles h3{
+        display: none;
+    }
+    .header__box{
+        justify-self: center;
+    }
+    .graphicBox{
+        font-size: 15px;
+    }
+    .column__graphicBox div{
+        margin: 0px 10px;
+        width: 15px;
+    }
+    .graphic{
+        display: none;
     }
     .forecast__main{
         padding: 0px 10px 10px 10px;
@@ -458,7 +625,7 @@ figcaption{
         width: 400px;
         font-size: 1.1rem;
     }
-    .home, .forecast{
+    .home, .forecast, .mobileForecast{
         width: 100%;
         padding: 0px;
     }
