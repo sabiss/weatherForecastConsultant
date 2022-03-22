@@ -72,7 +72,7 @@ function search(){
                         }
                     }
                     //setting day weather status in html img tags
-                    const WEATHERICONS = ["img/weatherIcons/rainIcon.png", "img/weatherIcons/cloud.png","img/weatherIcons/stormIcon.png", "img/weatherIcons/sunBehindCloudIcon.png", "img/weatherIcons/sunIcon.png", "img/weatherIcons/windIcon.png", "img/weatherIcons/showIcon.png", "img/weatherIcons/drizzleIcon.png"]// an array with all the weather icons
+                    const WEATHERICONS = ["img/weatherIcons/rainIcon.png", "img/weatherIcons/cloud.png","img/weatherIcons/stormIcon.png", "img/weatherIcons/sunBehindCloudIcon.png", "img/weatherIcons/sunIcon.png", "img/weatherIcons/windIcon.png", "img/weatherIcons/snowIcon.png", "img/weatherIcons/drizzleIcon.png"]// an array with all the weather icons
                     const ICONS = document.querySelectorAll("img.statusIcon")
                     for(let i = 0; i < 7; i++){
                         if(data["daily"][i]["weather"][0]["main"] == "Rain"){//verificando se vai chover//pegando a img daquele dia no html
