@@ -18,7 +18,7 @@
         <header class = "home__header">
             <div class = "header__box">
                 <div class = "lupe-background">
-                    <img src="img/lupe-seach.png" alt ="lupe icon for seach" onclick="search()">
+                    <a href="#forecast" id = "anchor"><img src="img/lupe-seach.png" alt ="lupe icon for seach" onclick="search()"></a>
                 </div>
                 <input type = "text" placeholder="Pesquisar Lugar">
             </div>
@@ -29,16 +29,16 @@
         </div>
         <div class = "cities-image">
             <figcaption>
-                <img src = "img/img-teste/curitiba.jpg">
-                <caption>Curitiba, BRA</caption>
+                <img src = "img/img-teste/curitiba.jpg" class = "imgCity">
+                <caption class = "nameOfCity">Curitiba, BRA</caption>
             </figcaption>
             <figcaption>
-                <img src = "img/img-teste/natal.jpg">
-                <caption>Natal, BRA</caption>
+                <img src = "img/img-teste/natal.jpg" class = "imgCity">
+                <caption class = "nameOfCity">Natal, BRA</caption>
             </figcaption>
             <figcaption>
-                <img src = "img/img-teste/sp.jpg">
-                <caption>São Paulo, BRA</caption><!--Colocar dinamicamente pelo JS-->
+                <img src = "img/img-teste/sp.jpg" class = "imgCity">
+                <caption class = "nameOfCity">São Paulo, BRA</caption><!--Colocar dinamicamente pelo JS-->
             </figcaption>
         </div>
         <div class = "week-forecast">
@@ -119,7 +119,7 @@
             </div>
         </div>
     </section>
-    <section class = "forecast">
+    <section class = "forecast" id="forecast">
         <header class = "forecast__header">
             <div class = "forecast__header___container">
                 <p class = "notification">Notificações</p>
@@ -132,6 +132,7 @@
             <img src="img/cloud.png" alt="clouds images" class = "clouds c2">
             <img src="img/cloud.png" alt="clouds images" class = "clouds c3">
             <div class = "forecast__main___controlContainer">
+                <div class = "CURRENTFORECASTSTATUSICON"></div>
                 <div class = "forecast__main___littleContainer"><!--pegar o query desse forecast__main___littleContainer da tag P-->
                     <h2>Hoje</h2>
                     <p><span class = "dayOfWeek"></span>, <span class = "dayOfWeekNumber"></span> <span class = "mouthOfUser"></span></p>
