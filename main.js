@@ -147,7 +147,7 @@ function search(){
                     else if(data["daily"][indexOfDay]["weather"][0]["main"] == "Thunderstorm"){
                         CURRENTFORECASTSTATUSICON.classList.add("storm");
                     }
-                    else if(data["daily"][indexOfDay]["weather"][0]["main"] == "Cloud"){
+                    else if(data["daily"][indexOfDay]["weather"][0]["main"] == "Clouds"){
                         CURRENTFORECASTSTATUSICON.classList.add("cloud");
                     }
                     else if(data["daily"][indexOfDay]["weather"][0]["main"] == "Drizzle"){
@@ -238,19 +238,169 @@ function search(){
                     sunsetInformation = document.createTextNode(sunsetInformation)
                     SUNSET.innerText = ""
                     SUNSET.appendChild(sunsetInformation)
-                    
-                    const CITYONWINDOW = document.querySelectorAll("img.imgCity")
-                    const NAMEOFCITYONWINDOW = document.querySelectorAll("figcaption")
-                    // for(let i = 0; i < 48; i++){
-                    //     if(data["hourly"][i][dt] == )
-                    // }
-                    // console.log(NAMEOFCITYONWINDOW)
-                    // for(let i = 0; i < 4; i++){
-                    //     NAMEOFCITYONWINDOW[i].innerText = ""
-                    //     NAMEOFCITYONWINDOW[i].innerText = latestResearch[i]
-                    //     NAMEOFCITYONWINDOW.img.src= "img/img-teste/curitiba.png"
-                    //     console.log(latestResearch[i])
-                    // }
+
+                    const FIRSTCOLUMN = document.querySelector("div.column__graphicBox___first")
+                    const SECONDCOLUMN = document.querySelector("div.column__graphicBox___second")
+                    const THIRDCOLUMN = document.querySelector("div.column__graphicBox___third")
+                    const FOURTHCOLUMN = document.querySelector("div.column__graphicBox___fourth")
+                    const FIFTHCOLUMN = document.querySelector("div.column__graphicBox___fifth")
+                    const SIXTHCOLUMN = document.querySelector("div.column__graphicBox___sixth")
+
+                    let hourlySize = data["hourly"];
+                    hourlySize = hourlySize.length;
+
+                    let verif1 = false
+                    let verif2 = false
+                    let verif3 = false
+                    let verif4 = false
+                    let verif5 = false
+                    let verif6 = false
+
+                    for(let i =0; i < hourlySize; i++){
+                        let dt = data["hourly"][i]["dt"]
+
+                        let utcSeconds = dt;
+                        var d = new Date(0); // The 0 there is the key, which sets the date to the epoch
+                        d.setUTCSeconds(utcSeconds);
+                        let hour = d.getHours()
+
+                        console.log(`hour: ${hour} | I:${i}`)
+                        switch(hour){
+                            case 8:
+                                if(verif1 == false){
+                                    if(data["hourly"][i]["weather"][0]["main"] == "Clear"){
+                                        console.log("entrou")
+                                        FIRSTCOLUMN.style.background = "#FFEB3B"
+                                        FIRSTCOLUMN.style.height = "20%"
+                                        verif1 = true
+                                    }
+                                    else if(data["hourly"][i]["weather"][0]["main"] == "Rain"){
+                                        FIRSTCOLUMN.style.height = "54%"
+                                        verif1 = true
+                                    }
+                                    else if(data["hourly"][i]["weather"][0]["main"] == "Thunderstorm"){
+                                        FIRSTCOLUMN.style.height = "85%"
+                                        verif1 = true
+                                    }
+                                    else if(data["hourly"][i]["weather"][0]["main"] == "Clouds"){
+                                        FIRSTCOLUMN.style.height = "37%"
+                                        verif1 = true
+                                    }
+                                }
+                                break 
+                            case 23:
+                                if(verif2 == false){
+                                    if(data["hourly"][i]["weather"][0]["main"] == "Clear"){
+                                        console.log("entrou")
+                                        SECONDCOLUMN.style.background = "#FFEB3B"
+                                        SECONDCOLUMN.style.height = "20%"
+                                        verif2 = true
+                                    }
+                                    else if(data["hourly"][i]["weather"][0]["main"] == "Rain"){
+                                        SECONDCOLUMN.style.height = "54%"
+                                        verif2 = true
+                                    }
+                                    else if(data["hourly"][i]["weather"][0]["main"] == "Thunderstorm"){
+                                        SECONDCOLUMN.style.height = "85%"
+                                        verif2 = true
+                                    }
+                                    else if(data["hourly"][i]["weather"][0]["main"] == "Clouds"){
+                                        SECONDCOLUMN.style.height = "37%"
+                                        verif2 = true
+                                    }
+                                }
+                                break
+                            case 16:
+                                if(verif3 == false){
+                                    if(data["hourly"][i]["weather"][0]["main"] == "Clear"){
+                                        console.log("entrou")
+                                        THIRDCOLUMN.style.background = "#FFEB3B"
+                                        THIRDCOLUMN.style.height = "20%"
+                                        verif3 = true
+                                    }
+                                    else if(data["hourly"][i]["weather"][0]["main"] == "Rain"){
+                                        THIRDCOLUMN.style.height = "54%"
+                                        verif3 = true
+                                    }
+                                    else if(data["hourly"][i]["weather"][0]["main"] == "Thunderstorm"){
+                                        THIRDCOLUMN.style.height = "85%"
+                                        verif3 = true
+                                    }
+                                    else if(data["hourly"][i]["weather"][0]["main"] == "Clouds"){
+                                        THIRDCOLUMN.style.height = "37%"
+                                        verif3 = true
+                                    }
+                                }
+                                break
+                            case 20:
+                                if(verif4 == false){
+                                    if(data["hourly"][i]["weather"][0]["main"] == "Clear"){
+                                        console.log("entrou")
+                                        FOURTHCOLUMN.style.background = "#FFEB3B"
+                                        FOURTHCOLUMN.style.height = "20%"
+                                        verif4 = true
+                                    }
+                                    else if(data["hourly"][i]["weather"][0]["main"] == "Rain"){
+                                        FOURTHCOLUMN.style.height = "54%"
+                                        verif4 = true
+                                    }
+                                    else if(data["hourly"][i]["weather"][0]["main"] == "Thunderstorm"){
+                                        FOURTHCOLUMN.style.height = "85%"
+                                        verif4 = true
+                                    }
+                                    else if(data["hourly"][i]["weather"][0]["main"] == "Clouds"){
+                                        FOURTHCOLUMN.style.height = "37%"
+                                        verif4 = true
+                                    }
+                                }
+                                break
+                            case 12:
+                                if(verif5 == false){
+                                    if(data["hourly"][i]["weather"][0]["main"] == "Clear"){
+                                        console.log("entrou")
+                                        FIFTHCOLUMN.style.background = "#FFEB3B"
+                                        FIFTHCOLUMN.style.height = "20%"
+                                        verif5 = true
+                                    }
+                                    else if(data["hourly"][i]["weather"][0]["main"] == "Rain"){
+                                        FIFTHCOLUMN.style.height = "54%"
+                                        verif5 = true
+                                    }
+                                    else if(data["hourly"][i]["weather"][0]["main"] == "Thunderstorm"){
+                                        FIFTHCOLUMN.style.height = "85%"
+                                        verif5 = true
+                                    }
+                                    else if(data["hourly"][i]["weather"][0]["main"] == "Clouds"){
+                                        FIFTHCOLUMN.style.height = "37%"
+                                        verif5 = true
+                                    }
+                                }
+                                break
+                            case 4:
+                                if(verif6 == false){
+                                    if(data["hourly"][i]["weather"][0]["main"] == "Clear"){
+                                        console.log("entrou")
+                                        SIXTHCOLUMN.style.background = "#FFEB3B"
+                                        SIXTHCOLUMN.style.height = "20%"
+                                        verif6 = true
+                                    }
+                                    else if(data["hourly"][i]["weather"][0]["main"] == "Rain"){
+                                        SIXTHCOLUMN.style.height = "54%"
+                                        verif6 = true
+                                    }
+                                    else if(data["hourly"][i]["weather"][0]["main"] == "Thunderstorm"){
+                                        SIXTHCOLUMN.style.height = "85%"
+                                        verif6 = true
+                                    }
+                                    else if(data["hourly"][i]["weather"][0]["main"] == "Clouds"){
+                                        SIXTHCOLUMN.style.height = "37%"
+                                        verif6 = true
+                                    }
+                                }
+                                break
+                        }
+                    }
+
                 })
             })
         })
