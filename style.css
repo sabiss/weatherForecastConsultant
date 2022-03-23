@@ -371,8 +371,18 @@ figcaption{
     .week-forecast h3{
         color: var(--grey)
     }
+    .mobileForecast{
+        z-index: 1;
+    }
     .forecast__header{
         padding: 30px 10px;
+        z-index: 3;
+    }
+    .clouds{
+        z-index: 2;
+    }
+    .forecast__main{
+        z-index: 3;
     }
     input{
         width: 170px;
