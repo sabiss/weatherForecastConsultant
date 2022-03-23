@@ -50,11 +50,11 @@ function search(){
             COUNTRY.innerText = countryName
             lat = data[0]["lat"]
             lon = data[0]["lon"]
-            console.log(data)
             fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&lang=pt_br&exclude=current,minutely&appid=${WEATHERKEY}`)//putting the latitude and longitude on the request to get the weather information
             .then(response=>{
                 response.json()
                 .then(data => {
+                    console.log(data)
                     //setting the humidity on html
                     const PRECIPITATION = document.querySelectorAll("span.probabilityP")//all the tags that indicate probability rain
                     for(let i = 0; i < 7; i++){
@@ -134,7 +134,7 @@ function search(){
                     //putting the right status icon of the day
                     const CURRENTFORECASTSTATUSICON = document.querySelector('div.CURRENTFORECASTSTATUSICON')
                     let indexOfDay = date.getDay()
-                    console.log(indexOfDay)
+                    
                     if(data["daily"][indexOfDay]["weather"][0]["main"] == "Rain"){
                         CURRENTFORECASTSTATUSICON.classList.add("rain");
                     }
@@ -160,8 +160,6 @@ function search(){
                     number = document.createTextNode(number)
                     daynumber.innerText = ""
                     daynumber.appendChild(number)
-
-                    console.log(data)
 
                     let dayOfWeekNumber = date.getDay()
                     dayHour = date.getHours()
