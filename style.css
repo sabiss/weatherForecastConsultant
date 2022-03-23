@@ -451,6 +451,19 @@ figcaption{
     input{
         width: 200px;
     }
+    .mobileForecast{
+        z-index: 1;
+    }
+    .forecast__header{
+        padding: 30px 10px;
+        z-index: 3;
+    }
+    .clouds{
+        z-index: 2;
+    }
+    .forecast__main{
+        z-index: 3;
+    }
     .statusIcon{
         width: 30px;
     }
@@ -503,6 +516,19 @@ figcaption{
     }
 }
 @media only screen and (min-width: 700px) and (max-width:900px){
+    .mobileForecast{
+        z-index: 1;
+    }
+    .forecast__header{
+        padding: 30px 10px;
+        z-index: 3;
+    }
+    .clouds{
+        z-index: 2;
+    }
+    .forecast__main{
+        z-index: 3;
+    }
     .day h3{
         font-size: 1.7rem;
     }
@@ -589,6 +615,19 @@ figcaption{
     }
 }
 @media only screen and (min-width: 901px) and (max-width: 1150px){
+    .mobileForecast{
+        z-index: 1;
+    }
+    .forecast__header{
+        padding: 30px 10px;
+        z-index: 3;
+    }
+    .clouds{
+        z-index: 2;
+    }
+    .forecast__main{
+        z-index: 3;
+    }
     body{
         flex-direction: column;
     }
