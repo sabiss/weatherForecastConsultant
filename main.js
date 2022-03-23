@@ -58,14 +58,14 @@ function search(){
                     //setting the humidity on html
                     const PRECIPITATION = document.querySelectorAll("span.probabilityP")//all the tags that indicate probability rain
                     for(let i = 0; i < 7; i++){
-                        let rain = data["daily"][i]["humidity"]//pega a informação da chuva
+                        let humidity = data["daily"][i]["humidity"]//pega a informação da chuva
                         
-                        if(rain == undefined){//não tem porbabilidade de chuva = rain indefined
+                        if(humidity == undefined){//não tem porbabilidade de chuva = rain indefined
                             let no = document.createTextNode("0")
                             PRECIPITATION[i].innerText = ""
                             PRECIPITATION[i].appendChild(no)
                         }else{//item probabilidade
-                            let no = document.createTextNode(rain)
+                            let no = document.createTextNode(humidity)
                             PRECIPITATION[i].innerText = ""
                             PRECIPITATION[i].appendChild(no)//colocando a porbabilidade no html
                         }
