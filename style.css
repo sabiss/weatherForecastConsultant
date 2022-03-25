@@ -27,7 +27,7 @@ section{
 }
 .header__box{
     display: flex;
-    width: auto;
+    width: 90%;
     height: auto;
 }
 .lupe-background{
@@ -65,7 +65,7 @@ strong{
     
 }
 .imgCity{
-    transition: 1s ease-in-out;
+    transition: 0.4s ease-in-out;
 }
 .imgCity:hover{
     border: solid #F03D24 5px;
@@ -145,12 +145,7 @@ figcaption{
 .maxTemp{
     text-align: center;
 }
-.mobileForecast{
-    display: none;
-    padding: 20px;
-    flex-direction: column;
-}
-.forecast, .mobileForecast{
+.forecast{
     position: relative;
     z-index: -1 ;
     width: 40%;
@@ -163,6 +158,9 @@ figcaption{
     padding: 50px 20px 40px 20px;
     align-items: center;
     color: white;
+}
+.header__box___forecastMobile{
+    display: none;
 }
 .forecast__header___container{
     width: 200px;
@@ -372,37 +370,37 @@ figcaption{
 }
 
 @media only screen and (max-width: 359px){
-    .lupe-background{
-        z-index: 4;
-    }
-    .week-forecast{
-        color: white;
-    }
-    .week-forecast h3{
+    .home{
+        background-color: #110E3C;
         color: var(--grey)
     }
-    .mobileForecast{
+    .forecast{
         z-index: 1;
+    }
+    .clouds{
+        z-index: 2;
     }
     .forecast__header{
         padding: 30px 10px;
         z-index: 3;
     }
-    .clouds{
-        z-index: 2;
+    .header__box___forecastMobile, .lupe-background{
+        z-index: 4;
     }
     .forecast__main{
+        padding: 0px 10px 10px 10px;
         z-index: 3;
     }
-    input{
-        width: 170px;
-        z-index: 4;
+    .week-forecast{
+        grid-template-columns:repeat(5, 1fr);
+        margin-top: 20px;
     }
     .statusIcon{
         width: 30px;
     }
     .minTemp p, .maxTemp p{
         font-size: 0.9rem;
+        align-self: center;
     }
     .statusOfWeather img{
         padding: 5px;
@@ -411,23 +409,20 @@ figcaption{
         padding: 0px;
     }
     body{
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
     .cities-image{
         display: none;
     }
-    .home, .forecast, .mobileForecast{
+    .home, .forecast{
         width: 100%;
         padding: 0px;
     }
-    .titles h1{
-        text-align: center;
-    }
-    .titles h3{
+    .titles{
         display: none;
     }
-    .header__box{
-        justify-self: center;
+    .home__header{
+        display: none;
     }
     .graphicBox{
         font-size: 15px;
@@ -442,48 +437,63 @@ figcaption{
     .column__graphicBox___p{
         font-size: 12px;
     }
-    .forecast__main{
-        padding: 0px 10px 10px 10px;
+    input{
+        width: 170px;
+        z-index: 5;
+    }
+    .header__box___forecastMobile{
+        display: flex;
+    }
+    .forecast__header___container{
+        display: none;
     }
     .clouds{
         width: 200px;
     }
 }
 @media only screen and (min-width: 360px) and (max-width:699px){
-    .week-forecast{
-        color: white;
-    }
-    .week-forecast h3{
+    .home{
+        background-color: #110E3C;
         color: var(--grey)
     }
-    .forecast__header{
-        padding: 30px 10px;
-    }
-    .lupe-background{
-        z-index: 4;
-    }
-    input{
-        width: 200px;
-        z-index: 4;
-    }
-    .mobileForecast{
+    .forecast{
         z-index: 1;
-    }
-    .forecast__header{
-        padding: 30px 10px;
-        z-index: 3;
     }
     .clouds{
         z-index: 2;
     }
-    .forecast__main{
+    .forecast__header{
+        padding: 30px 10px;
         z-index: 3;
+    }
+    .header__box___forecastMobile{
+        display: flex;
+    }
+    .header__box___forecastMobile, .lupe-background{
+        z-index: 4;
+    }
+    .forecast__main{
+        padding: 0px 10px 10px 10px;
+        z-index: 3;
+    }
+    .week-forecast{
+        grid-template-columns:repeat(5, 1fr);
+    }
+    .forecast__header{
+        padding: 30px 10px;
+    }
+    input{
+        width: 200px;
+    }
+    .forecast__header{
+        padding: 30px 10px;
     }
     .statusIcon{
         width: 30px;
     }
     .minTemp p, .maxTemp p{
         font-size: 0.9rem;
+        align-self: center;
     }
     .statusOfWeather img{
         padding: 5px;
@@ -492,12 +502,12 @@ figcaption{
         padding: 0px;
     }
     body{
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
     .cities-image{
         display: none;
     }
-    .home, .forecast, .mobileForecast{
+    .home, .forecast{
         width: 100%;
         padding: 0px;
     }
@@ -507,8 +517,8 @@ figcaption{
     .titles h3{
         display: none;
     }
-    .header__box{
-        justify-self: center;
+    .home__header{
+        display:none;
     }
     .graphicBox{
         font-size: 15px;
@@ -531,18 +541,35 @@ figcaption{
     }
 }
 @media only screen and (min-width: 700px) and (max-width:900px){
-    .mobileForecast{
+    .home{
+        background-color: #110E3C;
+        color: var(--grey)
+    }
+    .forecast{
         z-index: 1;
+    }
+    .clouds{
+        z-index: 2;
     }
     .forecast__header{
         padding: 30px 10px;
         z-index: 3;
     }
-    .clouds{
-        z-index: 2;
+    .header__box___forecastMobile{
+        display: flex;
+    }
+    .header__box___forecastMobile, .lupe-background{
+        z-index: 4;
     }
     .forecast__main{
+        padding: 0px 10px 10px 10px;
         z-index: 3;
+    }
+    .week-forecast{
+        grid-template-columns:repeat(5, 1fr);
+    }
+    .forecast__header{
+        padding: 30px 10px;
     }
     .day h3{
         font-size: 1.7rem;
@@ -558,12 +585,7 @@ figcaption{
     }
     .minTemp p, .maxTemp p{
         font-size: 1.3rem;
-    }
-    .week-forecast{
-        color: white;
-    }
-    .week-forecast h3{
-        color: var(--grey)
+        align-self: center;
     }
     .column__graphicBox{
         font-size: 1.3rem;
@@ -571,22 +593,15 @@ figcaption{
     .column__graphicBox___p{
         font-size: 1.2rem;
     }
-    body{
-        font-size: 1.7em;
-    }
     .forecast__main___littleContainer h2{
         font-size: 2.2rem;
     }
     .forecast__header{
         padding: 30px 10px;
     }
-    .lupe-background{
-        z-index: 4;
-    }
     input{
         width: 400px;
         font-size: 1.1rem;
-        z-index: 4;
     }
     .statusIcon{
         width: 30px;
@@ -598,23 +613,21 @@ figcaption{
         padding: 0px;
     }
     body{
-        flex-direction: column;
+        font-size: 1.7em;
+        flex-direction: column-reverse;
     }
     .cities-image{
         display: none;
     }
-    .home, .forecast, .mobileForecast{
+    .home, .forecast{
         width: 100%;
         padding: 0px;
     }
-    .titles h1{
-        text-align: center;
-    }
-    .titles h3{
+    .titles{
         display: none;
     }
-    .header__box{
-        justify-self: center;
+    .home__header{
+        display: none;
     }
     .graphicBox{
         font-size: 15px;
@@ -634,21 +647,32 @@ figcaption{
     }
 }
 @media only screen and (min-width: 901px) and (max-width: 1150px){
-    .mobileForecast{
+    .home{
+        background-color: #110E3C;
+        color: var(--grey)
+    }
+    .forecast{
         z-index: 1;
+    }
+    .clouds{
+        z-index: 2;
     }
     .forecast__header{
         padding: 30px 10px;
         z-index: 3;
     }
-    .clouds{
-        z-index: 2;
+    .header__box___forecastMobile{
+        display: flex;
+    }
+    .header__box___forecastMobile, .lupe-background{
+        z-index: 4;
     }
     .forecast__main{
+        padding: 0px 10px 10px 10px;
         z-index: 3;
     }
     body{
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
     .forecast__header___container{
         font-size: 1.2rem;
@@ -688,27 +712,18 @@ figcaption{
     }
     .home__header{
         padding: 40px 20px;
-    }
-    .lupe-background{
-        z-index: 4;
+        display: none;
     }
     input{
         width: 400px;
         font-size: 1.1rem;
-        z-index: 4;
     }
-    .home, .forecast, .mobileForecast{
+    .home, .forecast{
         width: 100%;
         padding: 0px;
     }
-    .titles h1{
-        text-align: center;
-    }
-    .titles h3{
+    .titles{
         display: none;
-    }
-    .header__box{
-        justify-content: center;
     }
     .graphicBox{
         font-size: 1.4rem;
