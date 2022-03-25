@@ -394,6 +394,8 @@ figcaption{
     .week-forecast{
         grid-template-columns:repeat(5, 1fr);
         margin-top: 20px;
+        border-top: #979797 2px dashed;
+        border-bottom: #979797 2px dashed;
     }
     .statusIcon{
         width: 30px;
@@ -478,6 +480,8 @@ figcaption{
     }
     .week-forecast{
         grid-template-columns:repeat(5, 1fr);
+        border-top: #979797 2px dashed;
+        border-bottom: #979797 2px dashed;
     }
     .forecast__header{
         padding: 30px 10px;
@@ -567,6 +571,8 @@ figcaption{
     }
     .week-forecast{
         grid-template-columns:repeat(5, 1fr);
+        border-top: #979797 2px dashed;
+        border-bottom: #979797 2px dashed;
     }
     .forecast__header{
         padding: 30px 10px;
@@ -679,6 +685,8 @@ figcaption{
     }
     .week-forecast {
         font-size: 1.2rem;
+        border-top: #979797 2px dashed;
+        border-bottom: #979797 2px dashed;
     }
     .probabilityRain p{
         font-size: 1.2rem;
