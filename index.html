@@ -121,6 +121,12 @@
     </section>
     <section class = "forecast" id="forecast">
         <header class = "forecast__header">
+            <div class = "header__box___forecastMobile">
+                <div class = "lupe-background">
+                    <a href="#forecast" id = "anchor"><img src="img/lupe-seach.png" alt ="lupe icon for seach" onclick="search()"></a>
+                </div>
+                <input type = "text" placeholder="Pesquisar Lugar">
+            </div>
             <div class = "forecast__header___container">
                 <p class = "notification">Notificações</p>
                 <p>Lugares</p>
@@ -176,121 +182,6 @@
                 <div class = "column__graphicBox">
                     <div class = "column__graphicBox___sixth"></div>
                     <p class = "column__graphicBox___p">4AM</p>
-                </div>
-            </div>
-        </main>
-    </section>
-    <section class = "mobileForecast">
-        <header class = "forecast__header">
-            <div class = "header__box">
-                <div class = "lupe-background">
-                    <a href="#forecast" id = "anchor"><img src="img/lupe-seach.png" alt ="lupe icon for seach" onclick="search()"></a>
-                </div>
-                <input type = "text" placeholder="Pesquisar Lugar">
-            </div>
-            <img src="img/perfil.jpg" class = "perfilPhoto">
-        </header>
-        <main class = "forecast__main">
-            <img src="img/cloud.png" alt="clouds images" class = "clouds c1">
-            <img src="img/cloud.png" alt="clouds images" class = "clouds c2">
-            <img src="img/cloud.png" alt="clouds images" class = "clouds c3">
-            <div class = "forecast__main___controlContainer">
-                <div class = "CURRENTFORECASTSTATUSICON"></div>
-                <div class = "forecast__main___littleContainer"><!--pegar o query desse forecast__main___littleContainer da tag P-->
-                    <h2>Hoje</h2>
-                    <p><span class = "dayOfWeek"></span>, <span class = "dayOfWeekNumber"></span> <span class = "mouthOfUser"></span></p>
-                </div>
-            </div>
-            <div class = "temp"><!--pegar o query desse temp da tag P e H1-->
-                <h1><span class = "currentTemperature">28</span> <span class = "celsius">°C</span></h1>
-                <p><span class = "researchedCity"></span>, <span class = "country"></span></p>
-            </div>
-            <div class = "infos">
-                <p>Sensação de <span class = "feelsLike">26</span>°C</p>
-                <p class = "dot">Por do sol <span class = "sunset">17:15</span></p><!--pegar o query desse infos da tag span-->
-            </div>
-            <h3 class = "descriptionGraphic">Chances de chuva</h3>
-            <div class = "graphicBox">
-                <div class = "column__graphicBox forecastInformation">
-                    <p>Tempestade</p>
-                    <p>Chuva</p>
-                    <p>Sol</p>
-                </div>
-                <div class = "column__graphicBox">
-                    <div class = "column__graphicBox___first"></div>
-                    <p class = "column__graphicBox___p">8AM</p>
-                </div>
-                <div class = "column__graphicBox">
-                    <div class = "column__graphicBox___second"></div>
-                    <p class = "column__graphicBox___p">12PM</p>
-                </div>
-                <div class = "column__graphicBox">
-                    <div class = "column__graphicBox___third"></div>
-                    <p class = "column__graphicBox___p">16PM</p>
-                </div>
-                <div class = "column__graphicBox">
-                    <div class = "column__graphicBox___fourth"></div>
-                    <p class = "column__graphicBox___p">20PM</p>
-                </div>
-                <div class = "column__graphicBox">
-                    <div class = "column__graphicBox___fifth"></div>
-                    <p class = "column__graphicBox___p">12AM</p>
-                </div>
-                <div class = "column__graphicBox">
-                    <div class = "column__graphicBox___sixth"></div>
-                    <p class = "column__graphicBox___p">4AM</p>
-                </div>
-            </div>
-            <div class = "week-forecast">
-                <div class = "day column">
-                    <h3>Semana</h3>
-                    <p>Domingo</p>
-                    <p>Segunda</p>
-                    <p>Terça</p>
-                    <p>Quarta</p>
-                    <p>Quinta</p>
-                    <p>Sexta</p>
-                    <p>Sábado</p>
-                </div>
-                <div class = "probabilityRain column"> <!--Fazer uma queryAll com essa classe:probabilityRain-->
-                    <p class = "pIgnore"></p>
-                    <p><span class = "probabilityP">54</span>%</p>
-                    <p><span class = "probabilityP">54</span>%</p>
-                    <p><span class = "probabilityP">54</span>%</p>
-                    <p><span class = "probabilityP">54</span>%</p>
-                    <p><span class = "probabilityP">54</span>%</p>
-                    <p><span class = "probabilityP">54</span>%</p>
-                    <p><span class = "probabilityP">54</span>%</p>
-                </div>
-                <div class = "statusOfWeather column"><!--Fazer uma queryAll com essa classe:statusOfWeather-->
-                    <img src="" class = "ignore">
-                    <img src="img/weatherIcons/sunBehindCloudIcon.png" class = "statusIcon" alt="icon indicating the status of the weather forecast">
-                    <img src="img/weatherIcons/rainIcon.png" class = "statusIcon" alt="icon indicating the status of the weather forecast">
-                    <img src="img/weatherIcons/sunBehindCloudIcon.png" class = "statusIcon" alt="icon indicating the status of the weather forecast">
-                    <img src="img/weatherIcons/sunBehindCloudIcon.png" class = "statusIcon" alt="icon indicating the status of the weather forecast">
-                    <img src="img/weatherIcons/sunBehindCloudIcon.png" class = "statusIcon" alt="icon indicating the status of the weather forecast">
-                    <img src="img/weatherIcons/stormIcon.png" class = "statusIcon" alt="icon indicating the status of the weather forecast">
-                    <img src="img/weatherIcons/sunBehindCloudIcon.png" class = "statusIcon" alt="icon indicating the status of the weather forecast">
-                </div>
-                <div class = "minTemp column"><!--Fazer uma queryAll com essa classe:minTemp-->
-                    <p class = "ignore"></p>
-                    <p><span class = "minTempP">54</span>°C</p>
-                    <p><span class = "minTempP"></span>°C</p>
-                    <p><span class = "minTempP"></span>°C</p>
-                    <p><span class = "minTempP"></span>°C</p>
-                    <p><span class = "minTempP"></span>°C</p>
-                    <p><span class = "minTempP"></span>°C</p>
-                    <p><span class = "minTempP"></span>°C</p>
-                </div>
-                <div class = "maxTemp column"><!--Fazer uma queryAll com essa classe:maxTemp-->
-                    <p class = "ignore"></p>
-                    <p><span class = "maxTempP"></span>°C</p>
-                    <p><span class = "maxTempP"></span>°C</p>
-                    <p><span class = "maxTempP"></span>°C</p>
-                    <p><span class = "maxTempP"></span>°C</p>
-                    <p><span class = "maxTempP"></span>°C</p>
-                    <p><span class = "maxTempP"></span>°C</p>
-                    <p><span class = "maxTempP"></span>°C</p>
                 </div>
             </div>
         </main>
