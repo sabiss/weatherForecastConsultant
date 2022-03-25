@@ -128,13 +128,27 @@ figcaption{
     justify-self: center;
 }
 .redBar, .greyBar{
-    height: 5px;
+    height: 7px;
     width: 100%;
     align-self: center;
+    background-repeat: no-repeat;
 }
 .bar{
     display: flex;
     justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.bar:before{
+    content:"";
+    position:absolute;
+    width: 90%;
+    height:2px;
+    background:
+        repeating-linear-gradient(to right,red 0,red 3px,transparent 3px,transparent 7px) center;
+    background-size:100% 2px;
+    background-repeat:no-repeat;
+    z-index: -1;
 }
 .redBar{
     background-color: #F03D24;
@@ -327,7 +341,23 @@ figcaption{
 .column__graphicBox{
     display: grid;
     grid-template-rows: repeat(4, 1fr);
-    color: var(--grey)
+    color: var(--grey);
+}
+.verticalBars{
+    position: relative;
+    justify-content: center;
+}
+.verticalBars:before{
+    align-self: flex-start;
+    content: "";
+    background-size: 2px 100%;
+    width: 2px;
+    height: 75%;
+    background: 
+        repeating-linear-gradient(to bottom, #979797 0px, #979797 3px, transparent 3px, transparent 7px) center;
+    position: absolute;
+    justify-self: center;
+    z-index: -1;
 }
 .forecastInformation p {
     padding: 30px 0px;
@@ -540,7 +570,7 @@ figcaption{
     }
     .forecast__header___container{
         display: none;
-    }
+    }   
 }
 @media only screen and (min-width: 700px) and (max-width:900px){
     .home{
@@ -743,6 +773,9 @@ figcaption{
     }
     .forecast__main{
         padding: 0px 10px 10px 10px;
+    }
+    .bar:before{
+        z-index: 0;
     }
 }
 @media only screen and (min-width: 1151px) and (max-width: 1598px){
