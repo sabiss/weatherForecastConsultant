@@ -1,7 +1,7 @@
 let lon
 let lat
 latestResearch = []
-const CITY = document.querySelector("input")
+const CITY = document.querySelectorAll("input")
 const WEATHERKEY = "9dc46f67dfcdd64dfca56c839c8359f2"// key of OpenWeatherForecast api
 const FLICKRKEY = `118d64425544ea8d186c43fb0a75f2b0`// key of Flickr API
 
@@ -11,17 +11,28 @@ document.addEventListener("keypress", function(e){
         search()
     }
 })
-
+let mobileScrenn = false
 function search(){
     //pattern
     let valueCityInput;
-
-    if(CITY.value == null || CITY.value == undefined || CITY.value == ''){
-        valueCityInput = "Brasília"
+    if(window.screen.width < 1000){
+        mobileScrenn = true
+        if(CITY[1].value == null || CITY[1].value == undefined || CITY[1].value == ''){
+            valueCityInput = "Brasília"
+        }
+        else{
+            valueCityInput = CITY[1].value
+        }
     }
     else{
-        valueCityInput = CITY.value
+        if(CITY[0].value == null || CITY[0].value == undefined || CITY[0].value == ''){
+            valueCityInput = "Brasília"
+        }
+        else{
+            valueCityInput = CITY[0].value
+        }
     }
+    
     console.log(valueCityInput)
     fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${valueCityInput}&limit=1&appid=${WEATHERKEY}`)//request to get the latitude and longitude of the city that user wants to see the weather forecast
     .then(response => {
@@ -199,10 +210,20 @@ function search(){
                     }
 
                     //showing the name of the search city
-                    let cityName = CITY.value
-                    if(CITY.value == null || CITY.value == undefined || CITY.value == ''){
-                        cityName = "Brasília"
+                    let cityName;
+                    if(mobileScrenn == true){
+                        cityName = CITY[1].value
+                        if(CITY[1].value == null || CITY[1].value == undefined || CITY[1].value == ''){
+                            cityName = "Brasília"
+                        }
                     }
+                    else{
+                        cityName = CITY[0].value
+                        if(CITY[0].value == null || CITY[0].value == undefined || CITY[0].value == ''){
+                            cityName = "Brasília"
+                        }
+                    }
+                    
 
                     const RESEARCHEDCITY = document.querySelector("span.researchedCity")
 
