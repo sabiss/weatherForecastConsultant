@@ -5,15 +5,6 @@ const CITY = document.querySelector("input")
 const WEATHERKEY = "9dc46f67dfcdd64dfca56c839c8359f2"// key of OpenWeatherForecast api
 const FLICKRKEY = `118d64425544ea8d186c43fb0a75f2b0`// key of Flickr API
 
-if(window.screen.width < 1000){
-    const SECTIONMOBILE = document.querySelector("section.mobileForecast")
-    const SECTIONHOME = document.querySelector("section.home")
-    const SECTIONFORECASTDESKTOP = document.querySelector("section.forecast")
-
-    SECTIONFORECASTDESKTOP.style.display = "none"
-    SECTIONHOME.style.display = 'none'
-    SECTIONMOBILE.style.display = 'flex'
-}
 //when the user search
 document.addEventListener("keypress", function(e){
     if(e.key === "Enter" || e.key == "End"){
@@ -22,16 +13,6 @@ document.addEventListener("keypress", function(e){
 })
 
 function search(){
-    // console.log(latestResearch.length)
-    // if(latestResearch.length < 4){
-    //     console.log("lista")
-    //     latestResearch.push(CITY.value)
-    // }
-    // else{
-    //     console.log("else")
-    //     latestResearch.pop()
-    //     latestResearch.push(CITY.value)
-    // }
     //pattern
     let valueCityInput;
 
@@ -41,6 +22,7 @@ function search(){
     else{
         valueCityInput = CITY.value
     }
+    console.log(valueCityInput)
     fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${valueCityInput}&limit=1&appid=${WEATHERKEY}`)//request to get the latitude and longitude of the city that user wants to see the weather forecast
     .then(response => {
         response.json()
@@ -173,7 +155,6 @@ function search(){
                         tempNowWindow = document.createTextNode(tempNowWindow)
                         TEMPNOW.innerText = ""
                         TEMPNOW.appendChild(tempNowWindow)
-                        console.log(TEMPNOW)
 
                         let feelsLikeInformation = data["daily"][dayOfWeekNumber]["feels_like"]["morn"]
                         feelsLikeInformation = document.createTextNode(feelsLikeInformation)
@@ -264,12 +245,10 @@ function search(){
                         d.setUTCSeconds(utcSeconds);
                         let hour = d.getHours()
 
-                        console.log(`hour: ${hour} | I:${i}`)
                         switch(hour){
                             case 8:
                                 if(verif1 == false){
                                     if(data["hourly"][i]["weather"][0]["main"] == "Clear"){
-                                        console.log("entrou")
                                         FIRSTCOLUMN.style.background = "#FFEB3B"
                                         FIRSTCOLUMN.style.height = "20%"
                                         verif1 = true
@@ -291,7 +270,6 @@ function search(){
                             case 23:
                                 if(verif2 == false){
                                     if(data["hourly"][i]["weather"][0]["main"] == "Clear"){
-                                        console.log("entrou")
                                         SECONDCOLUMN.style.background = "#FFEB3B"
                                         SECONDCOLUMN.style.height = "20%"
                                         verif2 = true
@@ -313,7 +291,6 @@ function search(){
                             case 16:
                                 if(verif3 == false){
                                     if(data["hourly"][i]["weather"][0]["main"] == "Clear"){
-                                        console.log("entrou")
                                         THIRDCOLUMN.style.background = "#FFEB3B"
                                         THIRDCOLUMN.style.height = "20%"
                                         verif3 = true
@@ -335,7 +312,6 @@ function search(){
                             case 20:
                                 if(verif4 == false){
                                     if(data["hourly"][i]["weather"][0]["main"] == "Clear"){
-                                        console.log("entrou")
                                         FOURTHCOLUMN.style.background = "#FFEB3B"
                                         FOURTHCOLUMN.style.height = "20%"
                                         verif4 = true
@@ -357,7 +333,6 @@ function search(){
                             case 12:
                                 if(verif5 == false){
                                     if(data["hourly"][i]["weather"][0]["main"] == "Clear"){
-                                        console.log("entrou")
                                         FIFTHCOLUMN.style.background = "#FFEB3B"
                                         FIFTHCOLUMN.style.height = "20%"
                                         verif5 = true
@@ -379,7 +354,6 @@ function search(){
                             case 4:
                                 if(verif6 == false){
                                     if(data["hourly"][i]["weather"][0]["main"] == "Clear"){
-                                        console.log("entrou")
                                         SIXTHCOLUMN.style.background = "#FFEB3B"
                                         SIXTHCOLUMN.style.height = "20%"
                                         verif6 = true
