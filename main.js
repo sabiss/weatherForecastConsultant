@@ -4,6 +4,8 @@ latestResearch = []
 const CITY = document.querySelectorAll("input")
 const WEATHERKEY = "9dc46f67dfcdd64dfca56c839c8359f2"// key of OpenWeatherForecast api
 const FLICKRKEY = `118d64425544ea8d186c43fb0a75f2b0`// key of Flickr API
+let round = 0
+let counter = 1;
 
 //when the user search
 document.addEventListener("keypress", function(e){
@@ -38,13 +40,60 @@ function search(){
     .then(response => {
         response.json()
         .then(data => {
-            let cityForSeachImage = valueCityInput + " " + data[0]["state"]//assembling search text
+            let geographicInfos = data
+            console.log(data)
+            
+            const COUNTRY = document.querySelector("span.country")
+            let countryName = data[0]["country"]
+            COUNTRY.innerText = countryName
+            lat = data[0]["lat"]
+            lon = data[0]["lon"]
+
+            let cityForSeachImage = data[0]["name"] + " " + data[0]["state"] + " " + data[0]["country"]//assembling search text
             //making an application to obtain photos of the cities surveyed
-            fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&name=value&text=${cityForSeachImage}&api_key=${FLICKRKEY}`)
+            fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${FLICKRKEY}&tags=city&sort=relevance&accuracy=11&lat=${lat}&lon=${lon}&format=json&nojsoncallback=1`) 
             .then(response => {
                 response.json()
                 .then(data => {
                     console.log(data)
+                    
+                    
+                    if(round > 0){
+                        let id = data["photos"]["photo"][1]["id"]
+                        let server = data["photos"]["photo"][1]["server"]
+                        let secret = data["photos"]["photo"][1]["secret"]
+
+                        let imgSrc = `https://live.staticflickr.com/${server}/${id}_${secret}_n.jpg`
+                        console.log(imgSrc)
+
+                        const CITYIMG = document.querySelectorAll(".imgCity")
+                        console.log(CITYIMG)
+                        const CITYCAPTION = document.querySelectorAll(".nameOfCity")
+                        console.log(CITYCAPTION)
+
+                        switch(counter){
+                            case 1:
+                                console.log(counter)
+                                CITYIMG[0].src = imgSrc
+                                CITYCAPTION[0].innerText = ""
+                                CITYCAPTION[0].innerText = geographicInfos[0]["name"] + ", " + geographicInfos[0]["country"]
+                                counter++
+                                break
+                            case 2:
+                                CITYIMG[1].src = imgSrc
+                                CITYCAPTION[1].innerText = ""
+                                CITYCAPTION[1].innerText = geographicInfos[0]["name"] + ", " + geographicInfos[0]["country"]
+                                counter++
+                                break
+                            case 3:
+                                CITYIMG[2].src = imgSrc
+                                CITYCAPTION[2].innerText = ""
+                                CITYCAPTION[2].innerText = geographicInfos[0]["name"] + ", " + geographicInfos[0]["country"]
+                                counter = 1
+                                break
+                        }
+                    }
+                    
                 })
                 .catch(error => {
                     console.log(error)
@@ -54,11 +103,6 @@ function search(){
                 console.log(error)
             })
 
-            const COUNTRY = document.querySelector("span.country")
-            let countryName = data[0]["country"]
-            COUNTRY.innerText = countryName
-            lat = data[0]["lat"]
-            lon = data[0]["lon"]
             fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&lang=pt_br&exclude=current,minutely&appid=${WEATHERKEY}`)//putting the latitude and longitude on the request to get the weather information
             .then(response=>{
                 response.json()
@@ -176,7 +220,6 @@ function search(){
                     const FEELSLIKE = document.querySelector("span.feelsLike")
                     //showing current temperature and the feels like based on time of day
                     if(dayHour >= 1 && dayHour <= 12){
-                        console.log("morning")
                         let tempNowWindow = data["daily"][dayOfWeekNumber]["temp"]["morn"]
                         tempNowWindow = document.createTextNode(tempNowWindow)
                         TEMPNOW.innerText = ""
@@ -188,7 +231,6 @@ function search(){
                         FEELSLIKE.appendChild(feelsLikeInformation)
                     }
                     else if(dayHour >= 13 && dayHour <= 16){
-                        console.log("day")
                         let tempNowWindow = data["daily"][dayOfWeekNumber]["temp"]["day"]
                         tempNowWindow = document.createTextNode(tempNowWindow)
                         TEMPNOW.innerText = ""
@@ -200,7 +242,6 @@ function search(){
                         FEELSLIKE.appendChild(feelsLikeInformation)
                     }
                     else if(dayHour >= 17 && dayHour <= 18){
-                        console.log("eve")
                         let tempNowWindow = data["daily"][dayOfWeekNumber]["temp"]["eve"]
                         tempNowWindow = document.createTextNode(tempNowWindow)
                         TEMPNOW.innerText = ""
@@ -212,7 +253,6 @@ function search(){
                         FEELSLIKE.appendChild(feelsLikeInformation)
                     }
                     else if(dayHour >=19 && dayHour <= 23){
-                        console.log("night")
                         let tempNowWindow = data["daily"][dayOfWeekNumber]["temp"]["night"]
                         tempNowWindow = document.createTextNode(tempNowWindow)
                         TEMPNOW.innerText = ""
@@ -435,6 +475,7 @@ function search(){
     .catch(error =>{
         console.log(error)
     })
+    round ++
 }
 //pattern forecast
 search()
