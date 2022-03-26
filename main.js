@@ -5,7 +5,6 @@ const CITY = document.querySelectorAll("input")
 const WEATHERKEY = "9dc46f67dfcdd64dfca56c839c8359f2"// key of OpenWeatherForecast api
 const FLICKRKEY = `118d64425544ea8d186c43fb0a75f2b0`// key of Flickr API
 let round = 0
-let counter = 1;
 
 //when the user search
 document.addEventListener("keypress", function(e){
@@ -14,7 +13,7 @@ document.addEventListener("keypress", function(e){
     }
 })
 let mobileScrenn = false
-function search(){
+function search(imgWindow){
     //pattern
     let valueCityInput;
     if(window.screen.width < 1000){
@@ -34,14 +33,13 @@ function search(){
             valueCityInput = CITY[0].value
         }
     }
-    
     console.log(valueCityInput)
     fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${valueCityInput}&limit=1&appid=${WEATHERKEY}`)//request to get the latitude and longitude of the city that user wants to see the weather forecast
     .then(response => {
         response.json()
         .then(data => {
             let geographicInfos = data
-            console.log(data)
+            console.log(geographicInfos)
             
             const COUNTRY = document.querySelector("span.country")
             let countryName = data[0]["country"]
@@ -51,47 +49,32 @@ function search(){
 
             let cityForSeachImage = data[0]["name"] + " " + data[0]["state"] + " " + data[0]["country"]//assembling search text
             //making an application to obtain photos of the cities surveyed
-            fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${FLICKRKEY}&tags=city&sort=relevance&accuracy=11&lat=${lat}&lon=${lon}&format=json&nojsoncallback=1`) 
+            fetch(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${FLICKRKEY}&text=${cityForSeachImage}&sort=relevance&privacy_filter=1&format=json&nojsoncallback=1`) 
             .then(response => {
                 response.json()
                 .then(data => {
                     console.log(data)
-                    
-                    
-                    if(round > 0){
-                        let id = data["photos"]["photo"][1]["id"]
-                        let server = data["photos"]["photo"][1]["server"]
-                        let secret = data["photos"]["photo"][1]["secret"]
 
-                        let imgSrc = `https://live.staticflickr.com/${server}/${id}_${secret}_n.jpg`
-                        console.log(imgSrc)
+                    const IMGRECENTCITY = document.querySelectorAll(".imgCity")
+                    const RECENTCITYP = document.querySelectorAll(".nameOfCity")
 
-                        const CITYIMG = document.querySelectorAll(".imgCity")
-                        console.log(CITYIMG)
-                        const CITYCAPTION = document.querySelectorAll(".nameOfCity")
-                        console.log(CITYCAPTION)
+                    for(let i = 0; i < 3; i++){
+                        if(i == round){
+                            let id = data["photos"]["photo"][0]["id"]
+                            let server = data["photos"]["photo"][0]["server"]
+                            let secret = data["photos"]["photo"][0]["secret"]
 
-                        switch(counter){
-                            case 1:
-                                console.log(counter)
-                                CITYIMG[0].src = imgSrc
-                                CITYCAPTION[0].innerText = ""
-                                CITYCAPTION[0].innerText = geographicInfos[0]["name"] + ", " + geographicInfos[0]["country"]
-                                counter++
-                                break
-                            case 2:
-                                CITYIMG[1].src = imgSrc
-                                CITYCAPTION[1].innerText = ""
-                                CITYCAPTION[1].innerText = geographicInfos[0]["name"] + ", " + geographicInfos[0]["country"]
-                                counter++
-                                break
-                            case 3:
-                                CITYIMG[2].src = imgSrc
-                                CITYCAPTION[2].innerText = ""
-                                CITYCAPTION[2].innerText = geographicInfos[0]["name"] + ", " + geographicInfos[0]["country"]
-                                counter = 1
-                                break
+                            let imgSrc = `https://live.staticflickr.com/${server}/${id}_${secret}_n.jpg
+                            `
+                            let innerTextCityName = geographicInfos[0]["name"] + ", " + geographicInfos[0]["country"] 
+                            IMGRECENTCITY[i].src = imgSrc
+                            RECENTCITYP[i].innerText = ""
+                            RECENTCITYP[i].innerText = innerTextCityName
                         }
+                    }
+                    round ++
+                    if(round == 3){
+                        round = 0
                     }
                     
                 })
@@ -475,7 +458,6 @@ function search(){
     .catch(error =>{
         console.log(error)
     })
-    round ++
 }
 //pattern forecast
 search()
