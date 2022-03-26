@@ -68,7 +68,7 @@ strong{
     transition: 0.4s ease-in-out;
 }
 .imgCity:hover{
-    border: solid #F03D24 5px;
+    border: solid #F03D24 3px;
 }
 .cities-image img{
     width: 220px;
