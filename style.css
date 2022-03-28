@@ -196,7 +196,7 @@ figcaption{
     width: 15%;
     border-radius: 5px;
 }
-.clouds{
+.backgrounClouds{
     opacity: 0.2;
     position: absolute;
     z-index: -1;
@@ -248,42 +248,27 @@ figcaption{
 }
 .CURRENTFORECASTSTATUSICON{
     height: 70px;
-}
-.sunny{
     margin-right: 12px;
-    content: url("img/weatherIcons/sunIcon.png");
     display: flex;
     align-self: center;
+}
+.clear{
+    content: url("img/weatherIcons/sunIcon.png");
 }
 .rain{
-    margin-right: 12px;
     content: url("img/weatherIcons/rainIcon.png");
-    display: flex;
-    align-self: center;
 }
-.cloud{
-    margin-right: 12px;
+.clouds{
     content: url("img/weatherIcons/cloud.png");
-    display: flex;
-    align-self: center;
 }
 .storm{
-    margin-right: 12px;
     content: url("img/weatherIcons/stormIcon.png");
-    display: flex;
-    align-self: center;
 }
 .drizzle{
-    margin-right: 12px;
     content: url("img/weatherIcons/drizzleIcon.png");
-    display: flex;
-    align-self: center;
 }
 .snow{
-    margin-right: 12px;
     content: url("img/weatherIcons/snowIcon.png");
-    display: flex;
-    align-self: center;
 }
 .forecast__main___littleContainer p{
     color: var(--grey);
