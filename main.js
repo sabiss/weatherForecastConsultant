@@ -453,16 +453,7 @@ function search(){
                                 break
                         }
                     }
-                    fetch(`https://app.geocodeapi.io/api/v1/search?apikey=8fd93230-ae99-11ec-94e5-457874f0aafe&text=${valueCityInput}`)
-                    .then(response =>{
-                        response.json()
-                        .then(data => {
-                            console.log(data)
-                        })
-                    })
-                    .catch(error =>{
-                        console.log(error)
-                    })
+                    
                 })
             })
         })
