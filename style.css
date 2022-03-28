@@ -424,8 +424,8 @@ figcaption{
     .week-forecast{
         grid-template-columns:repeat(5, 1fr);
         margin-top: 20px;
-        border-top: #979797 2px dashed;
-        border-bottom: #979797 2px dashed;
+        border-top: #d4c644ce 2px dashed;
+        border-bottom: #d4c644ce 2px dashed;
     }
     .statusIcon{
         width: 30px;
@@ -511,8 +511,8 @@ figcaption{
     }
     .week-forecast{
         grid-template-columns:repeat(5, 1fr);
-        border-top: #979797 2px dashed;
-        border-bottom: #979797 2px dashed;
+        border-top: #d4c644ce 2px dashed;
+        border-bottom: #d4c644ce 2px dashed;
     }
     input{
         width: 200px;
@@ -540,10 +540,7 @@ figcaption{
         width: 100%;
         padding: 0px;
     }
-    .titles h1{
-        text-align: center;
-    }
-    .titles h3{
+    .titles{
         display: none;
     }
     .home__header{
@@ -603,8 +600,8 @@ figcaption{
     }
     .week-forecast{
         grid-template-columns:repeat(5, 1fr);
-        border-top: #979797 2px dashed;
-        border-bottom: #979797 2px dashed;
+        border-top: #d4c644ce 2px dashed;
+        border-bottom: #d4c644ce 2px dashed;
     }
     .day h3{
         font-size: 1.7rem;
@@ -712,8 +709,8 @@ figcaption{
     }
     .week-forecast {
         font-size: 1.2rem;
-        border-top: #979797 2px dashed;
-        border-bottom: #979797 2px dashed;
+        border-top: #d4c644ce 2px dashed;
+        border-bottom: #d4c644ce 2px dashed;
     }
     .probabilityRain p{
         font-size: 1.2rem;
