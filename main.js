@@ -171,26 +171,10 @@ function search(){
                     //putting the right status icon of the day
                     const CURRENTFORECASTSTATUSICON = document.querySelector('div.CURRENTFORECASTSTATUSICON')
                     let indexOfDay = date.getDay()
-                    
-                    if(data["daily"][indexOfDay]["weather"][0]["main"] == "Rain"){
-                        CURRENTFORECASTSTATUSICON.classList.add("rain");
-                    }
-                    else if(data["daily"][indexOfDay]["weather"][0]["main"] == "Clear"){
-                        CURRENTFORECASTSTATUSICON.classList.add("sunny");
-                    }
-                    else if(data["daily"][indexOfDay]["weather"][0]["main"] == "Snow"){
-                        CURRENTFORECASTSTATUSICON.classList.add("snow");
-                    }
-                    else if(data["daily"][indexOfDay]["weather"][0]["main"] == "Thunderstorm"){
-                        CURRENTFORECASTSTATUSICON.classList.add("storm");
-                    }
-                    else if(data["daily"][indexOfDay]["weather"][0]["main"] == "Clouds"){
-                        CURRENTFORECASTSTATUSICON.classList.add("cloud");
-                    }
-                    else if(data["daily"][indexOfDay]["weather"][0]["main"] == "Drizzle"){
-                        CURRENTFORECASTSTATUSICON.classList.add("drizzle");
-                    }
+                    let classOfIcon = "CURRENTFORECASTSTATUSICON "
+                    let weatherType = data["daily"][indexOfDay]["weather"][0]["main"].toLowerCase()
 
+                    CURRENTFORECASTSTATUSICON.className = classOfIcon + weatherType
                     //showing the day number
                     let daynumber = document.querySelector("span.dayOfWeekNumber")
                     let number = date.getDate()
