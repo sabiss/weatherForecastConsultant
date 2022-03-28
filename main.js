@@ -13,7 +13,7 @@ document.addEventListener("keypress", function(e){
     }
 })
 let mobileScrenn = false
-function search(imgWindow){
+function search(){
     //pattern
     let valueCityInput;
     if(window.screen.width < 1000){
@@ -33,7 +33,7 @@ function search(imgWindow){
             valueCityInput = CITY[0].value
         }
     }
-    console.log(valueCityInput)
+    console.log(`é a cidade ${valueCityInput}`)
     fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${valueCityInput}&limit=1&appid=${WEATHERKEY}`)//request to get the latitude and longitude of the city that user wants to see the weather forecast
     .then(response => {
         response.json()
@@ -54,12 +54,13 @@ function search(imgWindow){
                 response.json()
                 .then(data => {
                     console.log(data)
-
+                    //getting the way to the places where the images and their descriptions will be
                     const IMGRECENTCITY = document.querySelectorAll(".imgCity")
                     const RECENTCITYP = document.querySelectorAll(".nameOfCity")
 
                     for(let i = 0; i < 3; i++){
                         if(i == round){
+                            //recognizing the id, server and secret of the images to make the revelation
                             let id = data["photos"]["photo"][0]["id"]
                             let server = data["photos"]["photo"][0]["server"]
                             let secret = data["photos"]["photo"][0]["secret"]
@@ -67,11 +68,12 @@ function search(imgWindow){
                             let imgSrc = `https://live.staticflickr.com/${server}/${id}_${secret}_n.jpg
                             `
                             let innerTextCityName = geographicInfos[0]["name"] + ", " + geographicInfos[0]["country"] 
+                            //inserting the information in its proper places
                             IMGRECENTCITY[i].src = imgSrc
                             RECENTCITYP[i].innerText = ""
                             RECENTCITYP[i].innerText = innerTextCityName
                         }
-                    }
+                    }   
                     round ++
                     if(round == 3){
                         round = 0
