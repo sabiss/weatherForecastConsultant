@@ -305,7 +305,7 @@ function search(){
                         var d = new Date(0); // The 0 there is the key, which sets the date to the epoch
                         d.setUTCSeconds(utcSeconds);
                         let hour = d.getHours()
-
+                        //setting chart bars size and color according to weather status
                         switch(hour){
                             case 8:
                                 if(verif1 == false){
@@ -453,6 +453,16 @@ function search(){
                                 break
                         }
                     }
+                    fetch(`https://app.geocodeapi.io/api/v1/search?apikey=8fd93230-ae99-11ec-94e5-457874f0aafe&text=${valueCityInput}`)
+                    .then(response =>{
+                        response.json()
+                        .then(data => {
+                            console.log(data)
+                        })
+                    })
+                    .catch(error =>{
+                        console.log(error)
+                    })
                 })
             })
         })
