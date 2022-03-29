@@ -392,7 +392,7 @@ figcaption{
     .forecast{
         z-index: 1;
     }
-    .clouds{
+    .backgrounClouds{
         z-index: 2;
     }
     .forecast__header{
@@ -464,7 +464,7 @@ figcaption{
     .forecast__header___container{
         display: none;
     }
-    .clouds{
+    .backgrounClouds{
         width: 200px;
     }
 }
@@ -476,7 +476,7 @@ figcaption{
     .forecast{
         z-index: 1;
     }
-    .clouds{
+    .backgrounClouds{
         z-index: 2;
     }
     .forecast__header{
@@ -547,7 +547,7 @@ figcaption{
     .forecast__main{
         padding: 0px 10px 10px 10px;
     }
-    .clouds{
+    .backgrounClouds{
         width: 200px;
     }
     .forecast__header___container{
@@ -562,7 +562,7 @@ figcaption{
     .forecast{
         z-index: 1;
     }
-    .clouds{
+    .backgrounClouds{
         z-index: 2;
     }
     .forecast__header{
@@ -656,7 +656,7 @@ figcaption{
     .forecast__main{
         padding: 0px 10px 10px 10px;
     }
-    .clouds{
+    .backgrounClouds{
         width: 200px;
     }
 }
@@ -668,7 +668,7 @@ figcaption{
     .forecast{
         z-index: 1;
     }
-    .clouds{
+    .backgrounClouds{
         z-index: 2;
     }
     .forecast__header{
