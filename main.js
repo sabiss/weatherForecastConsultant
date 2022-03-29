@@ -4,6 +4,7 @@ const CITY = document.querySelectorAll("input")
 const WEATHERKEY = "9dc46f67dfcdd64dfca56c839c8359f2"// key of OpenWeatherForecast api
 const FLICKRKEY = `118d64425544ea8d186c43fb0a75f2b0`// key of Flickr API
 let round = 0
+let loading = false
 
 //when the user search
 document.addEventListener("keypress", function(e){
@@ -36,6 +37,7 @@ function search(){
     .then(response => {
         response.json()
         .then(data => {
+            loading = true
             let geographicInfos = data
             
             const COUNTRY = document.querySelector("span.country")
@@ -444,3 +446,10 @@ function search(){
 }
 //pattern forecast
 search()
+
+const LOADING = document.querySelector("section.loadingPage")
+
+while(LOADING == false){
+    LOADING.style.display = 'flex'
+}
+LOADING.style.display = 'none'
