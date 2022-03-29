@@ -33,13 +33,11 @@ function search(){
             valueCityInput = CITY[0].value
         }
     }
-    console.log(`é a cidade ${valueCityInput}`)
     fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${valueCityInput}&limit=1&appid=${WEATHERKEY}`)//request to get the latitude and longitude of the city that user wants to see the weather forecast
     .then(response => {
         response.json()
         .then(data => {
             let geographicInfos = data
-            console.log(geographicInfos)
             
             const COUNTRY = document.querySelector("span.country")
             let countryName = data[0]["country"]
@@ -53,7 +51,6 @@ function search(){
             .then(response => {
                 response.json()
                 .then(data => {
-                    console.log(data)
                     //getting the way to the places where the images and their descriptions will be
                     const IMGRECENTCITY = document.querySelectorAll(".imgCity")
                     const RECENTCITYP = document.querySelectorAll(".nameOfCity")
