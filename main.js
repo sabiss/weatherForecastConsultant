@@ -1,6 +1,5 @@
 let lon
 let lat
-latestResearch = []
 const CITY = document.querySelectorAll("input")
 const WEATHERKEY = "9dc46f67dfcdd64dfca56c839c8359f2"// key of OpenWeatherForecast api
 const FLICKRKEY = `118d64425544ea8d186c43fb0a75f2b0`// key of Flickr API
