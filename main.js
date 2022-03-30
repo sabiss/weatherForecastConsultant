@@ -35,7 +35,7 @@ function search(){
     }
     
     const LOADING = document.querySelector("section.loadingPage")
-    LOADING.style.display = 'flex'
+    LOADING.style.display = 'flex'// show loading page
 
     fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${valueCityInput}&limit=1&appid=${WEATHERKEY}`)//request to get the latitude and longitude of the city that user wants to see the weather forecast
     .then(response => {
@@ -43,7 +43,7 @@ function search(){
         .then(data => {
             let geographicInfos = data
 
-            LOADING.style.display = 'none'
+            LOADING.style.display = 'none'//hiding the loading page because the data has already been fetched
 
             const COUNTRY = document.querySelector("span.country")
             let countryName = data[0]["country"]
