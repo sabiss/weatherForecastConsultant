@@ -227,6 +227,7 @@ function search(){
                     TEMPNOW.innerText = ""
                     TEMPNOW.appendChild(tempNowWindow)
 
+                    feelsLikeInformation = parseInt(feelsLikeInformation)
                     feelsLikeInformation = document.createTextNode(feelsLikeInformation)
                     FEELSLIKE.innerText = ""
                     FEELSLIKE.appendChild(feelsLikeInformation)
