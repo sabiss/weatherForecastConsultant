@@ -33,13 +33,18 @@ function search(){
             valueCityInput = CITY[0].value
         }
     }
+    
+    const LOADING = document.querySelector("section.loadingPage")
+    LOADING.style.display = 'flex'
+
     fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${valueCityInput}&limit=1&appid=${WEATHERKEY}`)//request to get the latitude and longitude of the city that user wants to see the weather forecast
     .then(response => {
         response.json()
         .then(data => {
-            loading = true
             let geographicInfos = data
-            
+
+            LOADING.style.display = 'none'
+
             const COUNTRY = document.querySelector("span.country")
             let countryName = data[0]["country"]
             COUNTRY.innerText = countryName
@@ -447,9 +452,6 @@ function search(){
 //pattern forecast
 search()
 
-const LOADING = document.querySelector("section.loadingPage")
 
-while(LOADING == false){
-    LOADING.style.display = 'flex'
-}
-LOADING.style.display = 'none'
+
+
