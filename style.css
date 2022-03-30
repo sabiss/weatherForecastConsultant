@@ -352,28 +352,10 @@ figcaption{
     justify-self: center;
     width: 20px;
     background-color: var(--less-dark-blue);
+    height: 100%;
     border-radius: 20px;
     grid-row: 1/4;
     align-self: flex-end;
-}
-.column__graphicBox___first{
-    height: 200px;
-}
-.column__graphicBox___second{
-    height: 150px;
-}
-.column__graphicBox___third{
-    height: 140px;
-    background-color: var(--yellow);
-}
-.column__graphicBox___fourth{
-    height: 50%;
-}
-.column__graphicBox___fifth{
-    height: 70%;
-}
-.column__graphicBox___sixth{
-    height: 100%;
 }
 .column__graphicBox___p{
     grid-row: 4/4;
