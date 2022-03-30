@@ -10,7 +10,7 @@ let loading = false
 document.addEventListener("keypress", function(e){
     if(e.key === "Enter" || e.key == "End"){
         search()
-        var field = document.createElement('input');
+        var field = document.createElement('input');//making the keyboard disappear when the user press enter
         field.setAttribute('type', 'text');
         document.body.appendChild(field);
 
