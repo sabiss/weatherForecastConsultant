@@ -278,7 +278,7 @@ function search(){
                     let verif4 = false
                     let verif5 = false
                     let verif6 = false
-                    
+
                     for(let i =0; i < hourlySize; i++){
                         let dt = data["hourly"][i]["dt"]
 
@@ -296,17 +296,17 @@ function search(){
                                         verif1 = true
                                     }
                                     else if(data["hourly"][i]["weather"][0]["main"] == "Rain"){
-                                        FIRSTCOLUMN.style.background = "#302E63;"
+                                        FIRSTCOLUMN.style.background = "#302E63"
                                         FIRSTCOLUMN.style.height = "54%"
                                         verif1 = true
                                     }
                                     else if(data["hourly"][i]["weather"][0]["main"] == "Thunderstorm"){
-                                        FIRSTCOLUMN.style.background = "#302E63;"
+                                        FIRSTCOLUMN.style.background = "#302E63"
                                         FIRSTCOLUMN.style.height = "85%"
                                         verif1 = true
                                     }
                                     else if(data["hourly"][i]["weather"][0]["main"] == "Clouds"){
-                                        FIRSTCOLUMN.style.background = "#302E63;"
+                                        FIRSTCOLUMN.style.background = "#302E63"
                                         FIRSTCOLUMN.style.height = "37%"
                                         verif1 = true
                                     }
@@ -320,17 +320,17 @@ function search(){
                                         verif2 = true
                                     }
                                     else if(data["hourly"][i]["weather"][0]["main"] == "Rain"){
-                                        SECONDCOLUMN.style.background = "#302E63;"
+                                        SECONDCOLUMN.style.background = "#302E63"
                                         SECONDCOLUMN.style.height = "54%"
                                         verif2 = true
                                     }
                                     else if(data["hourly"][i]["weather"][0]["main"] == "Thunderstorm"){
-                                        SECONDCOLUMN.style.background = "#302E63;"
+                                        SECONDCOLUMN.style.background = "#302E63"
                                         SECONDCOLUMN.style.height = "85%"
                                         verif2 = true
                                     }
                                     else if(data["hourly"][i]["weather"][0]["main"] == "Clouds"){
-                                        SECONDCOLUMN.style.background = "#302E63;"
+                                        SECONDCOLUMN.style.background = "#302E63"
                                         SECONDCOLUMN.style.height = "37%"
                                         verif2 = true
                                     }
@@ -344,17 +344,17 @@ function search(){
                                         verif3 = true
                                     }
                                     else if(data["hourly"][i]["weather"][0]["main"] == "Rain"){
-                                        THIRDCOLUMN.style.background = "#302E63;"
+                                        THIRDCOLUMN.style.background = "#302E63"
                                         THIRDCOLUMN.style.height = "54%"
                                         verif3 = true
                                     }
                                     else if(data["hourly"][i]["weather"][0]["main"] == "Thunderstorm"){
-                                        THIRDCOLUMN.style.background = "#302E63;"
+                                        THIRDCOLUMN.style.background = "#302E63"
                                         THIRDCOLUMN.style.height = "85%"
                                         verif3 = true
                                     }
                                     else if(data["hourly"][i]["weather"][0]["main"] == "Clouds"){
-                                        THIRDCOLUMN.style.background = "#302E63;"
+                                        THIRDCOLUMN.style.background = "#302E63"
                                         THIRDCOLUMN.style.height = "37%"
                                         verif3 = true
                                     }
@@ -368,17 +368,17 @@ function search(){
                                         verif4 = true
                                     }
                                     else if(data["hourly"][i]["weather"][0]["main"] == "Rain"){
-                                        FOURTHCOLUMN.style.background = "#302E63;"
+                                        FOURTHCOLUMN.style.background = "#302E63"
                                         FOURTHCOLUMN.style.height = "54%"
                                         verif4 = true
                                     }
                                     else if(data["hourly"][i]["weather"][0]["main"] == "Thunderstorm"){
-                                        FOURTHCOLUMN.style.background = "#302E63;"
+                                        FOURTHCOLUMN.style.background = "#302E63"
                                         FOURTHCOLUMN.style.height = "85%"
                                         verif4 = true
                                     }
                                     else if(data["hourly"][i]["weather"][0]["main"] == "Clouds"){
-                                        FOURTHCOLUMN.style.background = "#302E63;"
+                                        FOURTHCOLUMN.style.background = "#302E63"
                                         FOURTHCOLUMN.style.height = "37%"
                                         verif4 = true
                                     }
@@ -392,17 +392,17 @@ function search(){
                                         verif5 = true
                                     }
                                     else if(data["hourly"][i]["weather"][0]["main"] == "Rain"){
-                                        FIFTHCOLUMN.style.background = "#302E63;"
+                                        FIFTHCOLUMN.style.background = "#302E63"
                                         FIFTHCOLUMN.style.height = "54%"
                                         verif5 = true
                                     }
                                     else if(data["hourly"][i]["weather"][0]["main"] == "Thunderstorm"){
-                                        FIFTHCOLUMN.style.background = "#302E63;"
+                                        FIFTHCOLUMN.style.background = "#302E63"
                                         FIFTHCOLUMN.style.height = "85%"
                                         verif5 = true
                                     }
                                     else if(data["hourly"][i]["weather"][0]["main"] == "Clouds"){
-                                        FIFTHCOLUMN.style.background = "#302E63;"
+                                        FIFTHCOLUMN.style.background = "#302E63"
                                         FIFTHCOLUMN.style.height = "37%"
                                         verif5 = true
                                     }
@@ -416,17 +416,17 @@ function search(){
                                         verif6 = true
                                     }
                                     else if(data["hourly"][i]["weather"][0]["main"] == "Rain"){
-                                        SIXTHCOLUMN.style.background = "#302E63;"
+                                        SIXTHCOLUMN.style.background = "#302E63"
                                         SIXTHCOLUMN.style.height = "54%"
                                         verif6 = true
                                     }
                                     else if(data["hourly"][i]["weather"][0]["main"] == "Thunderstorm"){
-                                        SIXTHCOLUMN.style.background = "#302E63;"
+                                        SIXTHCOLUMN.style.background = "#302E63"
                                         SIXTHCOLUMN.style.height = "85%"
                                         verif6 = true
                                     }
                                     else if(data["hourly"][i]["weather"][0]["main"] == "Clouds"){
-                                        SIXTHCOLUMN.style.background = "#302E63;"
+                                        SIXTHCOLUMN.style.background = "#302E63"
                                         SIXTHCOLUMN.style.height = "37%"
                                         verif6 = true
                                     }
