@@ -10,6 +10,17 @@ let loading = false
 document.addEventListener("keypress", function(e){
     if(e.key === "Enter" || e.key == "End"){
         search()
+        var field = document.createElement('input');
+        field.setAttribute('type', 'text');
+        document.body.appendChild(field);
+
+        setTimeout(function() {
+            field.focus();
+            setTimeout(function() {
+                field.setAttribute('style', 'display:none;');
+            }, 50);
+        }, 50);
+
     }
 })
 let mobileScrenn = false
