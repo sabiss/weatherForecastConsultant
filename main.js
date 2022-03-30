@@ -43,8 +43,6 @@ function search(){
         .then(data => {
             let geographicInfos = data
 
-            LOADING.style.display = 'none'//hiding the loading page because the data has already been fetched
-
             const COUNTRY = document.querySelector("span.country")
             let countryName = data[0]["country"]
             COUNTRY.innerText = countryName
@@ -443,6 +441,7 @@ function search(){
                     
                 })
             })
+            LOADING.style.display = 'none'//hiding the loading page because the data has already been fetched
         })
     })
     .catch(error =>{
