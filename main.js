@@ -202,6 +202,7 @@ function search(){
                     //showing current temperature and the feels like based on time of day
                     if(dayHour >= 1 && dayHour <= 12){
                         let tempNowWindow = data["daily"][dayOfWeekNumber]["temp"]["morn"]
+                        tempNowWindow = parseInt(tempNowWindow)
                         tempNowWindow = document.createTextNode(tempNowWindow)
                         TEMPNOW.innerText = ""
                         TEMPNOW.appendChild(tempNowWindow)
@@ -213,6 +214,7 @@ function search(){
                     }
                     else if(dayHour >= 13 && dayHour <= 16){
                         let tempNowWindow = data["daily"][dayOfWeekNumber]["temp"]["day"]
+                        tempNowWindow = parseInt(tempNowWindow)
                         tempNowWindow = document.createTextNode(tempNowWindow)
                         TEMPNOW.innerText = ""
                         TEMPNOW.appendChild(tempNowWindow)
@@ -224,6 +226,7 @@ function search(){
                     }
                     else if(dayHour >= 17 && dayHour <= 18){
                         let tempNowWindow = data["daily"][dayOfWeekNumber]["temp"]["eve"]
+                        tempNowWindow = parseInt(tempNowWindow)
                         tempNowWindow = document.createTextNode(tempNowWindow)
                         TEMPNOW.innerText = ""
                         TEMPNOW.appendChild(tempNowWindow)
@@ -235,6 +238,7 @@ function search(){
                     }
                     else if(dayHour >=19 && dayHour <= 23){
                         let tempNowWindow = data["daily"][dayOfWeekNumber]["temp"]["night"]
+                        tempNowWindow = parseInt(tempNowWindow)
                         tempNowWindow = document.createTextNode(tempNowWindow)
                         TEMPNOW.innerText = ""
                         TEMPNOW.appendChild(tempNowWindow)
