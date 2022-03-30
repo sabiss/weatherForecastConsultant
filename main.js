@@ -200,55 +200,36 @@ function search(){
                     const TEMPNOW = document.querySelector("span.currentTemperature")
                     const FEELSLIKE = document.querySelector("span.feelsLike")
                     //showing current temperature and the feels like based on time of day
+                    let tempNowWindow;
+                    let feelsLikeInformation;
                     if(dayHour >= 1 && dayHour <= 12){
-                        let tempNowWindow = data["daily"][dayOfWeekNumber]["temp"]["morn"]
-                        tempNowWindow = parseInt(tempNowWindow)
-                        tempNowWindow = document.createTextNode(tempNowWindow)
-                        TEMPNOW.innerText = ""
-                        TEMPNOW.appendChild(tempNowWindow)
+                        tempNowWindow = data["daily"][dayOfWeekNumber]["temp"]["morn"]
 
-                        let feelsLikeInformation = data["daily"][dayOfWeekNumber]["feels_like"]["morn"]
-                        feelsLikeInformation = document.createTextNode(feelsLikeInformation)
-                        FEELSLIKE.innerText = ""
-                        FEELSLIKE.appendChild(feelsLikeInformation)
+                        feelsLikeInformation = data["daily"][dayOfWeekNumber]["feels_like"]["morn"]
                     }
                     else if(dayHour >= 13 && dayHour <= 16){
-                        let tempNowWindow = data["daily"][dayOfWeekNumber]["temp"]["day"]
-                        tempNowWindow = parseInt(tempNowWindow)
-                        tempNowWindow = document.createTextNode(tempNowWindow)
-                        TEMPNOW.innerText = ""
-                        TEMPNOW.appendChild(tempNowWindow)
+                        tempNowWindow = data["daily"][dayOfWeekNumber]["temp"]["day"]
 
-                        let feelsLikeInformation = data["daily"][dayOfWeekNumber]["feels_like"]["day"]
-                        feelsLikeInformation = document.createTextNode(feelsLikeInformation)
-                        FEELSLIKE.innerText = ""
-                        FEELSLIKE.appendChild(feelsLikeInformation)
+                        feelsLikeInformation = data["daily"][dayOfWeekNumber]["feels_like"]["day"]
                     }
                     else if(dayHour >= 17 && dayHour <= 18){
-                        let tempNowWindow = data["daily"][dayOfWeekNumber]["temp"]["eve"]
-                        tempNowWindow = parseInt(tempNowWindow)
-                        tempNowWindow = document.createTextNode(tempNowWindow)
-                        TEMPNOW.innerText = ""
-                        TEMPNOW.appendChild(tempNowWindow)
+                        tempNowWindow = data["daily"][dayOfWeekNumber]["temp"]["eve"]
 
-                        let feelsLikeInformation = data["daily"][dayOfWeekNumber]["feels_like"]["eve"]
-                        feelsLikeInformation = document.createTextNode(feelsLikeInformation)
-                        FEELSLIKE.innerText = ""
-                        FEELSLIKE.appendChild(feelsLikeInformation)
+                        feelsLikeInformation = data["daily"][dayOfWeekNumber]["feels_like"]["eve"]
                     }
                     else if(dayHour >=19 && dayHour <= 23){
-                        let tempNowWindow = data["daily"][dayOfWeekNumber]["temp"]["night"]
-                        tempNowWindow = parseInt(tempNowWindow)
-                        tempNowWindow = document.createTextNode(tempNowWindow)
-                        TEMPNOW.innerText = ""
-                        TEMPNOW.appendChild(tempNowWindow)
+                        tempNowWindow = data["daily"][dayOfWeekNumber]["temp"]["night"]
 
-                        let feelsLikeInformation = data["daily"][dayOfWeekNumber]["feels_like"]["night"]
-                        feelsLikeInformation = document.createTextNode(feelsLikeInformation)
-                        FEELSLIKE.innerText = ""
-                        FEELSLIKE.appendChild(feelsLikeInformation)
+                        feelsLikeInformation = data["daily"][dayOfWeekNumber]["feels_like"]["night"]
                     }
+                    tempNowWindow = parseInt(tempNowWindow)
+                    tempNowWindow = document.createTextNode(tempNowWindow)
+                    TEMPNOW.innerText = ""
+                    TEMPNOW.appendChild(tempNowWindow)
 
+                    feelsLikeInformation = document.createTextNode(feelsLikeInformation)
+                    FEELSLIKE.innerText = ""
+                    FEELSLIKE.appendChild(feelsLikeInformation)
                     //showing the name of the search city
                     let cityName;
                     if(mobileScrenn == true){
@@ -297,7 +278,7 @@ function search(){
                     let verif4 = false
                     let verif5 = false
                     let verif6 = false
-
+                    
                     for(let i =0; i < hourlySize; i++){
                         let dt = data["hourly"][i]["dt"]
 
